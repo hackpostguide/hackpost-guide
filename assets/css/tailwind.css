@@ -1,0 +1,77 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+@layer components {
+  .btn {
+    @apply relative bg-[#fff] px-3 py-2 rounded-lg text-black font-bold;
+    border: 3px solid var(--Sunset-Gradient, #FFB800);
+    transition: border-color 0.3s; /* Add transition for border-color */
+
+    &:hover {
+      border-color: rgb(238, 0, 255); /* Change border color on hover */
+    }
+  }
+
+
+  .btn-minor {
+    @apply relative px-3 py-2 rounded-lg text-gray-700 dark:text-gray-400 font-normal;
+    border: 2px solid var(--Gray, rgb(156 163 175));
+    opacity: 0.7;
+    transition: opacity 0.3s; /* Add transition for opacity */
+    /*cursor: pointer; /* Add cursor pointer on hover */
+
+    &:hover {
+      opacity: 1; /* Change opacity on hover */
+    }
+  }
+
+  /* Other styles */
+  
+  * {
+    box-sizing: border-box;
+  }
+
+  .card {
+    @apply p-3 rounded-2xl bg-gray-100 dark:bg-neutral-950 shadow-md h-full;
+    border: 3px solid var(--Gray, rgb(156 163 175));
+    transition: border-color 0.3s; /* Add transition for border-color */
+
+    &:hover {
+      border-color: rgb(238, 0, 255); /* Change border color on hover */
+    }
+  }
+
+  .Heading1 {
+    @apply text-6xl font-extrabold;
+    @apply dark:text-white text-black;
+  }
+  .Heading2 {
+    @apply text-4xl font-bold;
+    @apply dark:text-white text-black;
+  }
+  .Heading3 {
+    @apply text-2xl font-semibold;
+    @apply dark:text-white text-black;
+  }
+
+  .bodyText {
+    @apply text-xl font-normal;
+    @apply dark:text-gray-400 text-gray-800;
+  }
+
+
+/* 
+  .NuxtContent h1 {
+    @apply .Heading1;
+  }
+  .nuxt-content h2 {
+    @apply .Heading2;
+  }
+  .nuxt-content h3 {
+    @apply .Heading3;
+  }
+  .nuxt-content p {
+    @apply .bodyText;
+  } */
+}
