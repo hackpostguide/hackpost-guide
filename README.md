@@ -1,63 +1,19 @@
-# Nuxt 3 Minimal Starter
+# HackPost.Guide
 
-Look at the [Nuxt 3 documentation](https://nuxt.com/docs/getting-started/introduction) to learn more.
+The premier resource hub for hackathon developers. Free. Open Source. Community Driven.
 
-## Setup
+Note: This is still work in progress.
 
-Make sure to install the dependencies:
+## Documentation + Contributing
 
-```bash
-# npm
-npm install
+All contributions are welcome! To get started, simply pick an issue you'd like to work on, leave a comment, and submit a Pull Request!
 
-# pnpm
-pnpm install
+## Contact
 
-# yarn
-yarn install
-```
+If you have any questions, please reach out to us at [hackpost.guide@gmail.com](hackpost.guide@gmail.com).
 
-## Development Server
+Our discord server: [https://discord.gg/UjZDQcTMjD](https://discord.gg/UjZDQcTMjD)
 
-Start the development server on `http://localhost:3000`:
+## License
 
-```bash
-# npm
-npm run dev
-
-# pnpm
-pnpm run dev
-
-# yarn
-yarn dev
-```
-
-## Production
-
-Build the application for production:
-
-```bash
-# npm
-npm run build
-
-# pnpm
-pnpm run build
-
-# yarn
-yarn build
-```
-
-Locally preview production build:
-
-```bash
-# npm
-npm run preview
-
-# pnpm
-pnpm run preview
-
-# yarn
-yarn preview
-```
-
-Check out the [deployment documentation](https://nuxt.com/docs/getting-started/deployment) for more information.
+This work is licensed under a [Creative Commons Attribution-NonCommercial-ShareAlike 4.0 International License](https://creativecommons.org/licenses/by-nc-sa/4.0/).
