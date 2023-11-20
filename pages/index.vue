@@ -29,7 +29,7 @@
         <h3 class="bodyText p-5">Lorem ipsum dolor sit amet consectetur adipisicing elit. Commodi repellat eos voluptas ut eligendi aspernatur dolorem harum minima facilis expedita?</h3>
       </div>
       <div class="col-start-0 col-span-12 md:col-start-7 md:col-span-6 p-10">
-        <h2 class="Heading2 md:text-right p-5">But nahhhhhhhhhhh</h2>
+        <h2 class="Heading2 md:text-right p-5">Lorem ipsum dolor sit amet consectetur adipisicing elit. Laudantium, distinctio.</h2>
         <h3 class="bodyText md:text-right p-5">That's why we're here to help!</h3>
         <div class="flex items-center justify-end p-5">
           <AppButton buttonStyle="major" to="/courses">Get Started</AppButton>
