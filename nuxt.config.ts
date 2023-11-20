@@ -6,17 +6,29 @@ export default defineNuxtConfig({
   devtools: { enabled: true },
 
   //existing modules in use 
-  modules: [
-    '@nuxtjs/tailwindcss',
-    '@nuxtjs/color-mode',
-    'nuxt-icon',
-    '@nuxt/content',
-  ],
+    modules: [
+      '@nuxt/content',
+      '@nuxtjs/tailwindcss',
+      '@nuxtjs/color-mode',
+      'nuxt-icon',
+    ],
 
   //colorMode module configurations
+  // https://color-mode.nuxtjs.org
   colorMode: {
     classSuffix: ''
   },
+  // https://content.nuxtjs.org
+  // content: {
+  //   documentDriven: true,
+  //   highlight: {
+  //     // See the available themes on https://github.com/shikijs/shiki/blob/main/docs/themes.md#all-theme
+  //     theme: {
+  //       dark: 'github-dark',
+  //       default: 'github-light'
+  //     }
+  //   }
+  // },
 
   //tailwind css module configurations
   tailwindcss: {
@@ -31,7 +43,7 @@ export default defineNuxtConfig({
   //app metadata
   app: {
     head: {
-      title: 'ImaginAI',
+      title: 'HackPost',
       meta: [
         { 
           name: 'description', 
