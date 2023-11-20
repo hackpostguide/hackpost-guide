@@ -46,7 +46,7 @@
               </button>
             </div> -->
 
-            <ModeSwitch class="flex mx-5" />
+            <ModeSwitch class="flex mx-5 dark:text-gray-100 hover:text-gray-700 dark:hover:text-gray-300" />
           </div>
 
         </nav>
