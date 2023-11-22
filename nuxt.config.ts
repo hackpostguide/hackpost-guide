@@ -47,9 +47,19 @@ export default defineNuxtConfig({
       meta: [
         { 
           name: 'description', 
-          content: 'The premier resource hub for hackathon participants. Free. Open Source. Community Driven. Note: This project is still work in progress.'
-        }
-      ]
+          content: 'The premier resource hub for hackathon participants. Free. Open Source. Community Driven. Note: This project is still work in progress.',
+        },
+        { name: 'msapplication-TileColor', content: '#00aba9' },
+        { name: 'theme-color', content: '#333333' }
+      ],
+      link: [
+
+        { rel: 'apple-touch-icon', sizes: '180x180', href: '/apple-touch-icon.png' },
+        { rel: 'icon', type: 'image/png', sizes: '32x32', href: '/favicon-32x32.png' },
+        { rel: 'icon', type: 'image/png', sizes: '16x16', href: '/favicon-16x16.png' },
+        { rel: 'manifest', href: '/site.webmanifest' },
+        { rel: 'mask-icon', href: '/safari-pinned-tab.svg', color: '#5bbad5' }
+      ],
     }
   }
 })
