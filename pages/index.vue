@@ -65,6 +65,20 @@
     </div>  
   </template>
   
+  <script setup>
+  
+    useHead({
+        title: 'HackPost',
+        meta: [
+            {
+                hid: 'description',
+                name: 'description',
+                content: 'HackPost is a community-driven platform for high-quality resources to help you leverage the power of AI.'
+            }
+        ]
+    });
+  
+  </script>
   
   <style lang="css">
 

@@ -47,7 +47,7 @@ export default defineNuxtConfig({
       meta: [
         { 
           name: 'description', 
-          content: 'Coolest website ever'
+          content: 'The premier resource hub for hackathon participants. Free. Open Source. Community Driven. Note: This project is still work in progress.'
         }
       ]
     }

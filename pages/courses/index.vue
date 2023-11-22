@@ -25,7 +25,16 @@
 
 <script setup>
 
-    
+    useHead({
+        title: 'Modules | HackPost',
+        meta: [
+            {
+                hid: 'description',
+                name: 'description',
+                content: 'Explore our modules.'
+            }
+        ]
+    });
 
 </script>
 
