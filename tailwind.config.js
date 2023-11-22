@@ -14,6 +14,14 @@ module.exports = {
       // },
     },
   },
+  colors: {
+    'text': '#c7c7c7',
+    'background': '#050510',
+    'primary': '#7d26c9',
+    'secondary': '#53570a',
+    'accent': '#ebb22d',
+   },
+   
   plugins: [
     require('@tailwindcss/typography'),
     // ...
