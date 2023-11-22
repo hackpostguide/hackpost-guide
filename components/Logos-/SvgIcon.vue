@@ -13,11 +13,11 @@
     name: "SvgIcon",
     props: {
         iconWidth: {
-        type: String, // You can also use Number if width is always in pixels
+        type: String, 
         default: "48", // Default width if not specified
         },
         iconHeight: {
-        type: String, // You can also use Number if height is always in pixels
+        type: String, 
         default: "48", // Default height if not specified
         },
     },
