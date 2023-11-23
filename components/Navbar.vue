@@ -1,27 +1,27 @@
 <template>
-    <header class="stickTop shadow-sm bg-white dark:bg-black">
-        <nav class="container mx-auto py-4 flex justify-between items-end dark:text-white text-black">
-          <NuxtLink to="/" class="pl-10">
-            <div class="flex items-center">
-              <!-- <Logos-SvgIcon v-if="$colorMode.value === 'dark'" iconWidth="24" iconHeight="24" />
-              <Logos-SvgIcon-Dark v-else iconWidth="24" iconHeight="24" /> -->
-              <Logos-SvgIcon iconWidth="24" iconHeight="24" />
-              <p class="px-3">
-                <span class="font-bold">HackPost</span> Guide
-              </p>
-            </div>
-          </NuxtLink>
-          <div class="flex items-center">
-            <ul class="flex gap-4 ml-auto">
-              <li><NuxtLink to="/courses">Modules</NuxtLink></li>
-              <li><NuxtLink to="/about">About</NuxtLink></li>
-              <!-- <li><NuxtLink to="/" class="btn">Sign Up</NuxtLink></li> -->
-            </ul>
-            <ModeSwitch class="flex mx-5 dark:text-gray-100 hover:text-gray-700 dark:hover:text-gray-300" />
-          </div>
-
-        </nav>
-      </header>
+  <header class="stickTop shadow-sm bg-white dark:bg-black">
+    <!-- container mx-auto  -->
+    <nav class="py-4 grid grid-cols-12 dark:text-white text-black">
+      <div class="col-start-2 col-end-5">
+        <NuxtLink to="/" class="flex items-left">
+          <Logos-SvgIcon iconWidth="24" iconHeight="24" />
+          <p class="px-3">
+            <span class="font-bold">HackPost</span> Guide
+          </p>
+        </NuxtLink>
+      </div>
+      <div class="col-start-8 col-end-11 flex items-center justify-end">
+        <ul class="flex gap-9">
+          <li><NuxtLink to="/courses">Modules</NuxtLink></li>
+          <li><NuxtLink to="/about">About</NuxtLink></li>
+          <li><NuxtLink to="/" class="btn">Sign Up</NuxtLink></li>
+        </ul>
+      </div>
+      <div class="col-start-11 col-end-12 flex items-center justify-end">
+        <ModeSwitch class=" dark:text-gray-100 hover:text-gray-700 dark:hover:text-gray-300" />
+      </div>
+    </nav>
+  </header>
 </template>
 
 <script setup lang="ts" async>
@@ -34,7 +34,7 @@
 
     const setColorTheme = (newTheme: Theme) => {
     useColorMode().preference = newTheme;
-    themeDropdownOpen.value = false; // Close the dropdown after selecting a theme
+    themeDropdownOpen.value = false;
     };
 
     const toggleThemeDropdown = () => {
