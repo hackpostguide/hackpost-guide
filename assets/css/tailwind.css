@@ -54,7 +54,7 @@
   }
 
   .Heading1 {
-    @apply text-8xl font-bold;
+    @apply text-6xl sm:text-8xl font-bold;
     @apply dark:text-white text-black;
   }
   .Heading2 {
