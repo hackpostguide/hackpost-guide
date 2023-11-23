@@ -2,7 +2,7 @@
     <!--Hero page-->
     <div class="grid grid-cols-12">
 
-      <div class="col-start-0 col-span-12 h-screen flex flex-col justify-center items-center">
+      <div class="col-start-2 col-end-12 h-screen flex flex-col justify-center items-center">
         <div class="p-5">
           <h1 class="Heading1 text-center">
             Learn. <span class="sunset-gradient"> Build. </span> 
@@ -25,24 +25,24 @@
       </div>
 
       <!--Second page: Why choose us-->
-      <div class="col-start-0 col-span-12 md:col-span-10 p-10">
-        <h2 class="Heading2 p-5">Why?</h2>
-        <h3 class="bodyText p-5">Lorem ipsum dolor sit amet consectetur adipisicing elit. Commodi repellat eos voluptas ut eligendi aspernatur dolorem harum minima facilis expedita?</h3>
+      <div class="col-start-2 col-end-12 md:col-end-10 mt-12">
+        <h2 class="Heading2 py-5">Why?</h2>
+        <h3 class="bodyText py-5">Lorem ipsum dolor sit amet consectetur adipisicing elit. Commodi repellat eos voluptas ut eligendi aspernatur dolorem harum minima facilis expedita?</h3>
       </div>
-      <div class="col-start-0 col-span-12 md:col-start-7 md:col-span-6 p-10">
-        <h2 class="Heading2 md:text-right p-5">Lorem ipsum dolor sit amet consectetur adipisicing elit. Laudantium, distinctio.</h2>
-        <h3 class="bodyText md:text-right p-5">That's why we're here to help!</h3>
-        <div class="flex items-center justify-end p-5">
+      <div class="col-start-2 col-end-12 md:col-start-5 mt-12">
+        <h2 class="Heading2 md:text-right py-5">Lorem ipsum dolor sit amet consectetur adipisicing elit. Laudantium, distinctio.</h2>
+        <h3 class="bodyText md:text-right py-5">That's why we're here to help!</h3>
+        <div class="flex items-center justify-end py-5">
           <AppButton buttonStyle="major" to="/courses">Get Started</AppButton>
         </div>
       </div>
 
       <!--Third page: What we offer-->
-      <div class="col-start-0 col-span-12 p-10 h-screen mt-12">
-        <div class="flex items-center justify-center p-5">
+      <div class="col-start-2 col-end-12 py-10 h-screen mt-24">
+        <div class="flex items-center justify-left md: justify-center py-5">
           <h2 class="Heading2">Supercharge Deez Nuts.</h2>
         </div>
-        <div class="flex items-center justify-center p-5">
+        <div class="flex items-center justify-left md: justify-center py-5">
           <h3 class="bodyText">Check out our nuts!</h3>
         </div>
         <!--Grid with different courses for user to select-->
@@ -52,11 +52,11 @@
       </div>
 
       <!--Fourth page: Call to action-->
-      <div class="col-start-0 col-span-12 p-10 h-full">
-        <div class="flex items-center justify-center p-5">
+      <div class="col-start-2 col-end-12 py-10 h-full">
+        <div class="flex items-center justify-center py-5">
           <h2 class="Heading2">What are you waiting for?</h2>
         </div>
-        <div class="flex items-center justify-center p-5">
+        <div class="flex items-center justify-center py-5">
           <h3 class="bodyText">Let's get started!</h3>
         </div>
         <div class="flex items-center justify-center">
@@ -87,6 +87,11 @@
       /* float: left; */
       /* padding: 15px; */
       /* border: 1px solid red; */
+      /*In dark mode: border has width 0, but in light mode, border has width 1: */
+      /* border-width: 1px; */
+    }
+    .grid {
+      /* border: 1px solid blue; */
     }
 
     @tailwind base;

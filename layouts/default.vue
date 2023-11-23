@@ -1,11 +1,11 @@
 <template> <!--Default layout, will always apply unless another layout overrides it-->
-    <div class="flex flex-col min-h-screen">
+    <div class="">
       
       <Navbar />
 
 
-      <div class="flex-grow" :style="{ background: 'var(--background)' }">
-        <div class="m-auto py-10 px-8 md:px-24 lg:px-40">
+      <div class="" :style="{ background: 'var(--background)' }">
+        <div class="py-10">
           <slot /> <!--This is where the page content goes-->
         </div>
       </div>
