@@ -4,7 +4,7 @@
       <Navbar />
 
 
-      <div class="flex-grow dark:bg-neutral-900">
+      <div class="flex-grow" :style="{ background: 'var(--background)' }">
         <div class="m-auto py-10 px-8 md:px-24 lg:px-40">
           <slot /> <!--This is where the page content goes-->
         </div>

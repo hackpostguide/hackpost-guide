@@ -1,5 +1,5 @@
 <template>
-    <footer class="bg-gray-100 dark:bg-neutral-950 text-black dark:text-white py-4">
+    <footer class="bg-white dark:bg-black text-black dark:text-white py-4">
 
         <!--Need to fix mobile look for footer-->
         <div class="mx-auto max-w-7xl px-6 pb-8 pt-8 sm:pt-16 lg:px-8 xl:pt-32">

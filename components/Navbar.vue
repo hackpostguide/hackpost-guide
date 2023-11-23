@@ -1,12 +1,14 @@
 <template>
-    <header class="stickTop shadow-sm bg-gray-100 dark:bg-neutral-950">
+    <header class="stickTop shadow-sm bg-white dark:bg-black">
         <nav class="container mx-auto py-4 flex justify-between items-end dark:text-white text-black">
-          <NuxtLink to="/" class="font-bold pl-10">
+          <NuxtLink to="/" class="pl-10">
             <div class="flex items-center">
               <!-- <Logos-SvgIcon v-if="$colorMode.value === 'dark'" iconWidth="24" iconHeight="24" />
               <Logos-SvgIcon-Dark v-else iconWidth="24" iconHeight="24" /> -->
               <Logos-SvgIcon iconWidth="24" iconHeight="24" />
-              <p class="px-3">ImaginAI</p>
+              <p class="px-3">
+                <span class="font-bold">HackPost</span> Guide
+              </p>
             </div>
           </NuxtLink>
           <div class="flex items-center">
