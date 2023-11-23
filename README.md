@@ -8,6 +8,12 @@ Note: This is still work in progress.
 
 All contributions are welcome! To get started, simply pick an issue you'd like to work on, leave a comment, and submit a Pull Request!
 
+To start the development server on `http://localhost:3000`, run:
+
+```bash
+npm run dev
+```
+
 ## Contact
 
 If you have any questions, please reach out to us at [hackpost.guide@gmail.com](hackpost.guide@gmail.com).
