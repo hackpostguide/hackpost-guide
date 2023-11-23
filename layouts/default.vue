@@ -3,7 +3,7 @@
       
       <Navbar />
 
-      <div class="py-10 mt-10" :style="{ background: 'var(--background)' }">
+      <div class="py-10 mt-11" :style="{ background: 'var(--background)' }">
           <slot /> <!--This is where the page content goes-->
       </div>
 

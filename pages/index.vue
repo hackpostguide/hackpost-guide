@@ -26,12 +26,12 @@
 
       <!--Second page: Why choose us-->
       <div class="col-start-2 col-end-12 md:col-end-10 mt-12">
-        <h2 class="Heading2 py-5">Why?</h2>
-        <h3 class="bodyText py-5">Lorem ipsum dolor sit amet consectetur adipisicing elit. Commodi repellat eos voluptas ut eligendi aspernatur dolorem harum minima facilis expedita?</h3>
+        <h2 class="Heading2 ">Why?</h2>
+        <h3 class="bodyText ">Lorem ipsum dolor sit amet consectetur adipisicing elit. Commodi repellat eos voluptas ut eligendi aspernatur dolorem harum minima facilis expedita?</h3>
       </div>
       <div class="col-start-2 col-end-12 md:col-start-5 mt-12">
-        <h2 class="Heading2 md:text-right py-5">Lorem ipsum dolor sit amet consectetur adipisicing elit. Laudantium, distinctio.</h2>
-        <h3 class="bodyText md:text-right py-5">That's why we're here to help!</h3>
+        <h2 class="Heading2 md:text-right ">Lorem ipsum dolor sit amet consectetur adipisicing elit. Laudantium, distinctio.</h2>
+        <h3 class="bodyText md:text-right ">That's why we're here to help!</h3>
         <div class="flex items-center justify-end py-5">
           <AppButton buttonStyle="major" to="/courses">Get Started</AppButton>
         </div>
@@ -39,10 +39,10 @@
 
       <!--Third page: What we offer-->
       <div class="col-start-2 col-end-12 py-10 h-screen mt-24">
-        <div class="flex items-center justify-left md: justify-center py-5">
+        <div class="flex items-center justify-left md: justify-center ">
           <h2 class="Heading2">Supercharge Deez Nuts.</h2>
         </div>
-        <div class="flex items-center justify-left md: justify-center py-5">
+        <div class="flex items-center justify-left md: justify-center ">
           <h3 class="bodyText">Check out our nuts!</h3>
         </div>
         <!--Grid with different courses for user to select-->
@@ -53,10 +53,10 @@
 
       <!--Fourth page: Call to action-->
       <div class="col-start-2 col-end-12 py-10 h-full">
-        <div class="flex items-center justify-center py-5">
+        <div class="flex items-center justify-center ">
           <h2 class="Heading2">What are you waiting for?</h2>
         </div>
-        <div class="flex items-center justify-center py-5">
+        <div class="flex items-center justify-center ">
           <h3 class="bodyText">Let's get started!</h3>
         </div>
         <div class="flex items-center justify-center">
