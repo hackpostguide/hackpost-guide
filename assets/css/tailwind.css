@@ -5,18 +5,20 @@
 @layer components {
   .btn {
     @apply relative bg-[#fff] px-3 py-2 rounded-lg text-black font-bold;
-    border: 3px solid var(--Sunset-Gradient, #FFB800);
+    border: 3px solid var(--accent);
     transition: border-color 0.3s; /* Add transition for border-color */
 
     &:hover {
-      border-color: rgb(238, 0, 255); /* Change border color on hover */
+      border-color: var(--primary); /* Change border color on hover */
     }
   }
 
 
   .btn-minor {
-    @apply relative px-3 py-2 rounded-lg text-gray-700 dark:text-gray-400 font-normal;
-    border: 2px solid var(--Gray, rgb(156 163 175));
+    @apply relative px-3 py-2 rounded-lg font-normal;
+    color: var(--text);
+    border: 2px solid var(--secondary);
+    background-color: var(--secondary);
     opacity: 0.7;
     transition: opacity 0.3s; /* Add transition for opacity */
     /*cursor: pointer; /* Add cursor pointer on hover */
@@ -38,7 +40,7 @@
     transition: border-color 0.3s; /* Add transition for border-color */
 
     &:hover {
-      border-color: rgb(238, 0, 255); /* Change border color on hover */
+      border-color: var(--primary); /* Change border color on hover */
     }
   }
 
@@ -75,3 +77,21 @@
     @apply .bodyText;
   } */
 }
+
+@layer base {
+  :root {
+    --text: #2c2c2c;
+    --background: #efeffa;
+    --primary: #cb36d9;
+    --secondary: #f5cfa8;
+    --accent: #d29914;
+  }
+  .dark {
+    --text: #ffffff;
+    --background: #050510;
+    --primary: #b026c9;
+    --secondary: #a4681e;
+    --accent: #ebb22d;
+  }
+}
+
