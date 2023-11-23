@@ -11,9 +11,9 @@
         </div>
         <div class="flex items-center justify-center p-5 mb-5">
           <h3 class="text-2xl md:text-2xl lg:text-3xl font-semibold text-center dark:text-gray-400">
-            A repository of <span>high-quality resources</span> to help you leverage the power of AI. 
+            The premier resource hub for <span class="sunset-gradient">hackathon developers</span>.
             <br>
-            <span>Free.</span> <span>Community Driven.</span> 
+            <span>Free.</span> <span>Open Source.</span> <span>Community Driven.</span> 
           </h3>
         </div>
 
