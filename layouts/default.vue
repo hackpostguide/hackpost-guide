@@ -13,9 +13,6 @@
   </template>
   
   <style scoped>
-    /* .router-link-exact-active {
-      color: #12b488;
-    } */
     body {
         min-height: 100vh; /* Make sure the body covers the entire viewport height */
         display: flex;

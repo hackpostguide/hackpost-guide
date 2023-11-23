@@ -3,10 +3,12 @@
 @tailwind utilities;
 
 @layer components {
+
+  /*Buttons:*/
   .btn {
     @apply relative bg-[#fff] px-3 py-2 rounded-lg text-black font-bold;
     border: 3px solid var(--accent);
-    transition: border-color 0.3s; /* Add transition for border-color */
+    transition: border-color 0.3s; /* Added transition for border-color */
 
     &:hover {
       border-color: var(--primary); /* Change border color on hover */
@@ -20,15 +22,12 @@
     border: 2px solid var(--secondary);
     background-color: var(--secondary);
     opacity: 0.7;
-    transition: opacity 0.3s; /* Add transition for opacity */
-    /*cursor: pointer; /* Add cursor pointer on hover */
+    transition: opacity 0.3s; /* Added transition for opacity */
 
     &:hover {
       opacity: 1; /* Change opacity on hover */
     }
   }
-
-  /* Other styles */
   
   * {
     box-sizing: border-box;
@@ -44,15 +43,17 @@
     }
   }
 
+  /*Gradients:*/
   .sunset-gradient{
     @apply relative;
     background: linear-gradient(270deg, var(--accent) 0%, var(--primary) 100%);
-    -webkit-background-clip: text; /* Apply gradient to text */
-    background-clip: text; /* Define standard property for compatibility */
-    color: transparent; /* Make text transparent so the gradient is visible */
+    -webkit-background-clip: text; 
+    background-clip: text; 
+    color: transparent; 
     display: inline-block;
   }
 
+  /*Text styles:*/ 
   .Heading1 {
     @apply text-6xl sm:text-8xl font-bold;
     @apply dark:text-white text-black;
@@ -73,14 +74,15 @@
 }
 
 @layer base {
-  :root {
+  /*Colors:*/
+  :root { /*Light mode:*/
     --text: #2c2c2c;
     --background: #efeffa;
     --primary: #cb36d9;
     --secondary: #f5cfa8;
     --accent: #d29914;
   }
-  .dark {
+  .dark { /*Dark mode:*/
     --text: #ffffff;
     --background: #050510;
     --primary: #b026c9;

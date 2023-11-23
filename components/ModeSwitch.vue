@@ -18,6 +18,7 @@
   
   
 <script setup lang="ts">
+  // Need to fix: flickers when first loaded
   const colorMode = useColorMode()
   const onClick = () => (colorMode.value === 'light' ? (colorMode.preference = 'dark') : (colorMode.preference = 'light'))
 </script>

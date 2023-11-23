@@ -18,7 +18,9 @@ export default defineNuxtConfig({
   colorMode: {
     classSuffix: ''
   },
+
   // https://content.nuxtjs.org
+  // This doesn't work for some reason:
   // content: {
   //   documentDriven: true,
   //   highlight: {

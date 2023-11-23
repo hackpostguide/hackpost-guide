@@ -54,8 +54,9 @@
                 <Icon :name="item.icon" class="h-6 w-6" aria-hidden="true" />
             </a>
             </div>
+            <!-- Update license and copyright later -->
             <p class="mt-8 text-xs leading-5 text-gray-400 md:order-1 md:mt-0">
-            &copy; {{ new Date().getFullYear() }} ImaginAI
+            &copy; {{ new Date().getFullYear() }} HackPost.guide, All rights reserved.
             &bull;
             Written content licensed under
             <AppLink class="inline-block underline hover:no-underline"
@@ -66,28 +67,11 @@
             </p>
         </div>
 
-
-        <!-- <div class="container mx-auto flex justify-between items-center mb-10">
-            <p class="text-base p-10">&copy; 2023 ImaginAI</p>
-            <div class="flex space-x-4 p-10">
-            <NuxtLink to="/courses">
-                <Icon name="uil:instagram" color="gray" />
-            </NuxtLink>
-            <NuxtLink to="/courses">
-                <Icon name="uil:youtube" color="gray" />
-            </NuxtLink>
-            <NuxtLink to="/courses">
-                <Icon name="uil:discord" color="gray" />
-            </NuxtLink>
-            <NuxtLink to="/courses">
-                <Icon name="uil:github" color="gray" />
-            </NuxtLink>
-            </div>
-        </div> -->
     </footer>
 </template>
 
 <script setup lang="ts">
+/*Navigation links: need to update links later*/
 const navigation = {
     content: [
         { name: 'Modules', to: '/courses' },
@@ -143,10 +127,7 @@ Add a newsletter later
 
 <style lang="scss" scoped>
     [class*="col-"] {
-        /* float: left; */
-        /* padding: 15px; */
         /* border: 1px solid red; */
-        /*In dark mode: border has width 0, but in light mode, border has width 1: */
         border-width: 1px;
     }
 </style>

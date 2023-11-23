@@ -1,6 +1,5 @@
 <template>
   <header class="stickTop shadow-sm bg-white dark:bg-black">
-    <!-- container mx-auto  -->
     <nav class="py-4 grid grid-cols-12 dark:text-white text-black">
       <div class="col-start-2 col-end-5">
         <NuxtLink to="/" class="flex items-left">
@@ -10,10 +9,12 @@
           </p>
         </NuxtLink>
       </div>
+      <!-- Need to fix: turn into a toggle menu for mobile screens  -->
       <div class="col-start-8 col-end-11 flex items-center justify-end">
         <ul class="flex gap-9">
           <li><NuxtLink to="/courses">Modules</NuxtLink></li>
           <li><NuxtLink to="/about">About</NuxtLink></li>
+          <!-- Will implement firebase sign-in later -->
           <li><NuxtLink to="/" class="btn">Sign Up</NuxtLink></li>
         </ul>
       </div>

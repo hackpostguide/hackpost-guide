@@ -24,26 +24,26 @@
         </div>
       </div>
 
-      <!--Second page: Why choose us-->
+      <!--Second page: who we are-->
       <div class="col-start-2 col-end-12 md:col-end-10 mt-12">
-        <h2 class="Heading2 ">Why?</h2>
+        <h2 class="Heading2 ">For the community, by the community.</h2>
         <h3 class="bodyText ">Lorem ipsum dolor sit amet consectetur adipisicing elit. Commodi repellat eos voluptas ut eligendi aspernatur dolorem harum minima facilis expedita?</h3>
       </div>
       <div class="col-start-2 col-end-12 md:col-start-5 mt-12">
-        <h2 class="Heading2 md:text-right ">Lorem ipsum dolor sit amet consectetur adipisicing elit. Laudantium, distinctio.</h2>
-        <h3 class="bodyText md:text-right ">That's why we're here to help!</h3>
+        <h2 class="Heading2 md:text-right ">Designed for hackathon participants.</h2>
+        <h3 class="bodyText md:text-right ">Lorem ipsum dolor sit amet consectetur adipisicing elit. Eaque, harum?</h3>
         <div class="flex items-center justify-end py-5">
           <AppButton buttonStyle="major" to="/courses">Get Started</AppButton>
         </div>
       </div>
 
-      <!--Third page: What we offer-->
+      <!--Third page: Entice users to explore-->
       <div class="col-start-2 col-end-12 py-10 h-screen mt-24">
         <div class="flex items-center justify-left md: justify-center ">
-          <h2 class="Heading2">Supercharge Deez Nuts.</h2>
+          <h2 class="Heading2">Supercharge your hacking skills.</h2>
         </div>
         <div class="flex items-center justify-left md: justify-center ">
-          <h3 class="bodyText">Check out our nuts!</h3>
+          <h3 class="bodyText">Check out what others have made so far!</h3>
         </div>
         <!--Grid with different courses for user to select-->
         <div>
@@ -51,7 +51,9 @@
         </div>
       </div>
 
-      <!--Fourth page: Call to action-->
+      <!--Add sponsor section later-->
+
+      <!--Last page: Call to action-->
       <div class="col-start-2 col-end-12 py-10 h-full">
         <div class="flex items-center justify-center ">
           <h2 class="Heading2">What are you waiting for?</h2>
@@ -68,6 +70,7 @@
   
   <script setup>
   
+    //metadata for SEO
     useHead({
         title: 'HackPost',
         meta: [
@@ -83,31 +86,13 @@
   
   <style lang="css">
 
+    /* For debugging purposes:  */
     [class*="col-"] {
-      /* float: left; */
-      /* padding: 15px; */
-      /* border: 1px solid red; */
-      /*In dark mode: border has width 0, but in light mode, border has width 1: */
       /* border-width: 1px; */
     }
     .grid {
       /* border: 1px solid blue; */
     }
 
-    @tailwind base;
-    @tailwind components;
-    @tailwind utilities;
-
-    @layer utilities {
-        .pink-gradient {
-        background: linear-gradient(90deg, #FC5EFF 0%, #B635F3 57.99%);
-        background-clip: text;
-        -webkit-background-clip: text;
-        color: transparent; /* replaced -webkit-text-fill-color with color */
-        }
-        .font-arimo {
-        font-family: 'Arimo', sans-serif;
-        }
-    }
   </style>
   

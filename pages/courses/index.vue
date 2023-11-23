@@ -1,4 +1,5 @@
 <template>
+    <!-- Todo: apply css grids for entire page, fix paddings/margins -->
     <div class="m-auto">
 
         <div class="py-10">
@@ -40,8 +41,6 @@
 
 <style lang="css" scoped>
    /* [class*="col-"] {
-      /* float: left; */
-      /* padding: 15px; 
       border: 1px solid red;
     } */
 

@@ -1,4 +1,5 @@
 <template>
+    <!-- Maybe change this page to a "contributing" page or "docs" -->
     <div class="grid grid-cols-12">
         <div class="col-start-2 col-end-12">
             <p class="Heading2">Hello.</p>
