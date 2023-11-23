@@ -5,7 +5,8 @@
       <div class="col-start-0 col-span-12 h-screen flex flex-col justify-center items-center">
         <div class="p-5">
           <h1 class="Heading1 text-center">
-            Learn. <span> Build. </span>  Empower.
+            Learn. <span class="sunset-gradient"> Build. </span> 
+            <br>Empower.
           </h1>
         </div>
         <div class="flex items-center justify-center p-5 mb-5">

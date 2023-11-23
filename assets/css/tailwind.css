@@ -44,8 +44,17 @@
     }
   }
 
+  .sunset-gradient{
+    @apply relative;
+    background: linear-gradient(270deg, var(--accent) 0%, var(--primary) 100%);
+    -webkit-background-clip: text; /* Apply gradient to text */
+    background-clip: text; /* Define standard property for compatibility */
+    color: transparent; /* Make text transparent so the gradient is visible */
+    display: inline-block;
+  }
+
   .Heading1 {
-    @apply text-6xl font-extrabold;
+    @apply text-8xl font-bold;
     @apply dark:text-white text-black;
   }
   .Heading2 {
@@ -61,21 +70,6 @@
     @apply text-xl font-normal;
     @apply dark:text-gray-400 text-gray-800;
   }
-
-
-/* 
-  .NuxtContent h1 {
-    @apply .Heading1;
-  }
-  .nuxt-content h2 {
-    @apply .Heading2;
-  }
-  .nuxt-content h3 {
-    @apply .Heading3;
-  }
-  .nuxt-content p {
-    @apply .bodyText;
-  } */
 }
 
 @layer base {
