@@ -142,5 +142,11 @@ Add a newsletter later
 </script>
 
 <style lang="scss" scoped>
-
+    [class*="col-"] {
+        /* float: left; */
+        /* padding: 15px; */
+        /* border: 1px solid red; */
+        /*In dark mode: border has width 0, but in light mode, border has width 1: */
+        border-width: 1px;
+    }
 </style>
