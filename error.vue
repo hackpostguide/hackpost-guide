@@ -7,8 +7,8 @@
                 <div class="grid grid-cols-12 h-">
                     <div class="col-start-2 col-end-12">
                         <p class="mt-10 Heading2 font-bold">Error {{ statusCode }}</p>
-                        <p class="mt-7 bodyText">{{ message }}</p>
-                        <button class="btn my-7" @click="handleClearError">Go Home...</button>
+                        <!-- <p class="mt-7 bodyText">{{ message }}</p> -->
+                        <button class="btn my-7" @click="handleClearError">Go back to Home</button>
                     </div>
                 </div>
             </div>
