@@ -109,9 +109,6 @@ const navigation = {
     ],
 }
 
-/*
-Add a newsletter later
- */
 </script>
 
 <style lang="scss" scoped>
