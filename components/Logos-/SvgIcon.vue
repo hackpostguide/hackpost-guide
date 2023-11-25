@@ -26,4 +26,9 @@
 
 <style scoped>
 
+  /*Fixing the width and height of logo*/
+  svg {
+    min-width: 24px;
+    min-height: 24px;
+  }
 </style>
