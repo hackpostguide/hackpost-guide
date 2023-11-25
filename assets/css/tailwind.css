@@ -35,7 +35,7 @@
 
   .card {
     @apply p-3 rounded-2xl bg-gray-100 dark:bg-neutral-950 shadow-md h-full;
-    border: 3px solid var(--Gray, rgb(156 163 175));
+    border: 3px solid var(--gray);
     transition: border-color 0.3s; /* Add transition for border-color */
 
     &:hover {
@@ -81,6 +81,7 @@
     --primary: #cb36d9;
     --secondary: #f5cfa8;
     --accent: #d29914;
+    --gray: #9a9fad;
   }
   .dark { /*Dark mode:*/
     --text: #ffffff;
@@ -88,6 +89,7 @@
     --primary: #b026c9;
     --secondary: #a4681e;
     --accent: #ebb22d;
+    --gray: #33353a;
   }
 }
 
