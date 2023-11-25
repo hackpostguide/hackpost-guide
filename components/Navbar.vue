@@ -15,7 +15,7 @@
           <li><NuxtLink to="/courses">Modules</NuxtLink></li>
           <li><NuxtLink to="/about">About</NuxtLink></li>
           <!-- Will implement firebase sign-in later -->
-          <li><NuxtLink to="/" class="btn">Sign Up</NuxtLink></li>
+          <li><NuxtLink to="/signup" class="btn">Sign Up</NuxtLink></li>
         </ul>
       </div>
       <div class="col-start-11 col-end-12 flex items-center justify-end">
