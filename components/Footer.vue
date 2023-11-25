@@ -25,11 +25,11 @@
       </div>
     </footer> -->
 
-    <footer class="bg-white dark:bg-black text-black dark:text-white py-4">
+    <footer class="bg-white dark:bg-black text-black dark:text-white p-10 grid grid-cols-12">
 
       <!-- Insert newsletter here -->
-
-      <div class="m-20 border-t border-white/10 pt-8 mt-1 lg:flex lg:items-center lg:justify-between">
+      <div class="col-start-2 col-end-12">
+      <div class="my-20 border-t border-white/20 pt-8 mt-1 lg:flex lg:items-center lg:justify-between">
           <div class="flex space-x-6 md:order-2">
           <a target="_blank" v-for="item in navigation.social" :key="item.name" :href="item.href" class="text-gray-600 dark:text-gray-400"
               :class="item.hoverClass">
@@ -48,6 +48,7 @@
           </AppLink>
           &bull;
           </p>
+      </div>
       </div>
 
     </footer>
@@ -114,6 +115,6 @@ const navigation = {
 <style lang="scss" scoped>
     [class*="col-"] {
         /* border: 1px solid red; */
-        border-width: 1px;
+        //border-width: 1px;
     }
 </style>
