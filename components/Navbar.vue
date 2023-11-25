@@ -1,5 +1,5 @@
 <template>
-  <header class="stickTop shadow-sm bg-white dark:bg-black">
+  <header class="stickTop px-10 shadow-sm bg-white dark:bg-black">
     <nav class="py-4 grid grid-cols-12 dark:text-white text-black">
       <div class="col-start-2 col-end-5">
         <NuxtLink to="/" class="flex items-left">
