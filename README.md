@@ -8,7 +8,25 @@ Note: This is still work in progress.
 
 All contributions are welcome! To get started, simply pick an issue you'd like to work on, leave a comment, and submit a Pull Request!
 
-To start the development server on `http://localhost:3000`, run:
+### Installation and setup
+
+Start by installing [Node.js](https://nodejs.org/).
+
+Next, use the following command to clone the repo:
+
+```bash
+git clone https://github.com/hackpostguide/hackpost-guide
+```
+
+To install dependencies, open a terminal in the project root, and run this command:
+
+```bash
+npm install
+```
+
+### Development
+
+To start a local development server on `http://localhost:3000`, run:
 
 ```bash
 npm run dev
