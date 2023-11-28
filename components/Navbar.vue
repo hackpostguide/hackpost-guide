@@ -1,3 +1,4 @@
+
 <template>
   <header class="stickTop px-10 shadow-sm bg-white dark:bg-black">
     <nav class="py-4 grid grid-cols-12 dark:text-white text-black">
@@ -10,7 +11,7 @@
         </NuxtLink>
       </div>
       <!-- Need to fix: turn into a toggle menu for mobile screens  -->
-      <div class="col-start-8 col-end-11 flex items-center justify-end">
+      <div class="col-start-5 col-end-11 flex items-center justify-end mobileoff">
         <ul class="flex gap-9">
           <li><NuxtLink to="/courses">Modules</NuxtLink></li>
           <li><NuxtLink to="/about">About</NuxtLink></li>
@@ -18,6 +19,12 @@
           <li><NuxtLink to="/signup" class="btn">Sign Up</NuxtLink></li>
         </ul>
       </div>
+      <div class="col-start-5 col-end-11 flex items-center justify-end mobileon">
+        <NavbarDropdown></NavbarDropdown>
+      </div>
+
+      
+
       <div class="col-start-11 col-end-12 flex items-center justify-end">
         <ModeSwitch class=" dark:text-gray-100 hover:text-gray-700 dark:hover:text-gray-300" />
       </div>
@@ -26,7 +33,6 @@
 </template>
 
 <script setup lang="ts" async>
-
     useColorMode().preference = 'dark';
     type Theme = 'light' | 'dark';
 
@@ -41,6 +47,9 @@
     const toggleThemeDropdown = () => {
     themeDropdownOpen.value = !themeDropdownOpen.value;
     };
+    
+
+
 </script>
 
 <style lang="scss" scoped>
@@ -51,5 +60,16 @@
     width: 100%;
     z-index: 1000;
     box-shadow: 0 3px 6px rgba(0, 0, 0, 0.1);
+  }
+
+  @media (max-width: 700px) {
+    .mobileoff {
+        display: none;
+    }
+  }
+  @media (min-width: 700px) {
+    .mobileon {
+        display: none;
+    }
   }
 </style>
