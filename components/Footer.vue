@@ -25,7 +25,7 @@
       </div>
     </footer> -->
 
-    <footer class="bg-white dark:bg-black text-black dark:text-white p-10 grid grid-cols-12">
+    <footer class="bg-white dark:bg-black text-black dark:text-white p-1 sm:p-10 grid grid-cols-12">
 
       <!-- Insert newsletter here -->
       <div class="col-start-2 col-end-12">

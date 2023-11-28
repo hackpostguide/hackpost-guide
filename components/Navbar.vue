@@ -1,6 +1,6 @@
 
 <template>
-  <header class="stickTop px-10 shadow-sm bg-white dark:bg-black">
+  <header class="stickTop px-1 sm:px-10 shadow-sm bg-white dark:bg-black">
     <nav class="py-6 grid grid-cols-12 dark:text-white text-black">
       <div class="col-start-2 col-end-9 md:col-end-6">
         <NuxtLink to="/" class="flex items-left">
