@@ -1,8 +1,8 @@
 
 <template>
   <header class="stickTop px-10 shadow-sm bg-white dark:bg-black">
-    <nav class="py-4 grid grid-cols-12 dark:text-white text-black">
-      <div class="col-start-2 col-end-5">
+    <nav class="py-6 grid grid-cols-12 dark:text-white text-black">
+      <div class="col-start-2 col-end-9 md:col-end-6">
         <NuxtLink to="/" class="flex items-left">
           <Logos-SvgIcon iconWidth="24" iconHeight="24" />
           <p class="px-3">
@@ -11,7 +11,7 @@
         </NuxtLink>
       </div>
       <!-- Need to fix: turn into a toggle menu for mobile screens  -->
-      <div class="col-start-5 col-end-11 flex items-center justify-end mobileoff">
+      <div class="col-start-6 col-end-11 flex items-center justify-end mobileoff">
         <ul class="flex gap-9">
           <li><NuxtLink to="/courses">Modules</NuxtLink></li>
           <li><NuxtLink to="/about">About</NuxtLink></li>
@@ -19,7 +19,7 @@
           <li><NuxtLink to="/signup" class="btn">Sign Up</NuxtLink></li>
         </ul>
       </div>
-      <div class="col-start-5 col-end-11 flex items-center justify-end mobileon">
+      <div class="col-start-10 col-end-11 flex items-center justify-end mobileon">
         <NavbarDropdown></NavbarDropdown>
       </div>
 
@@ -62,12 +62,13 @@
     box-shadow: 0 3px 6px rgba(0, 0, 0, 0.1);
   }
 
-  @media (max-width: 700px) {
+  //768px is the breakpoint for md
+  @media (max-width: 768px) {
     .mobileoff {
         display: none;
     }
   }
-  @media (min-width: 700px) {
+  @media (min-width: 768px) {
     .mobileon {
         display: none;
     }
