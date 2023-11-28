@@ -16,7 +16,9 @@ export default defineNuxtConfig({
   //colorMode module configurations
   // https://color-mode.nuxtjs.org
   colorMode: {
-    classSuffix: ''
+    classSuffix: '',
+    preference: 'dark',
+    fallback: 'light',
   },
 
   // https://content.nuxtjs.org
