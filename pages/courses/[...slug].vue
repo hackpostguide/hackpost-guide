@@ -34,11 +34,11 @@
         </div>
 
         <div class="flex gap-4 my-4">
-          <AppButton buttonStyle="transparent" to="/courses">
+          <AppButton buttonStyle="transparent" to="/courses" class="inline-flex align-center">
             <Icon name="uil:angle-left-b" class="h-[24px] w-[24px]"/>
             Previous Post
           </AppButton>
-          <AppButton buttonStyle="transparent" to="/courses">
+          <AppButton buttonStyle="transparent" to="/courses" class="inline-flex align-center">
             Next Post
             <Icon name="uil:angle-right-b" class="h-[24px] w-[24px]"/>
           </AppButton>
