@@ -1,9 +1,8 @@
 <template>
     <div class="grid grid-cols-12">
     <section class="my-3 col-start-2 col-end-5">
-      <AppButton buttonStyle="minor" to="/courses">
+      <AppButton buttonStyle="transparent" to="/courses" class="inline-flex align-center">
           <Icon name="uil:angle-left-b" class="h-[24px] w-[24px]"/>
-          Back
       </AppButton>
     </section>
       <div class="my-8 flex flex-col items-center col-start-1 col-end-12">
@@ -35,11 +34,11 @@
         </div>
 
         <div class="flex gap-4 my-4">
-          <AppButton buttonStyle="minor" to="/courses">
+          <AppButton buttonStyle="transparent" to="/courses">
             <Icon name="uil:angle-left-b" class="h-[24px] w-[24px]"/>
             Previous Post
           </AppButton>
-          <AppButton buttonStyle="minor" to="/courses">
+          <AppButton buttonStyle="transparent" to="/courses">
             Next Post
             <Icon name="uil:angle-right-b" class="h-[24px] w-[24px]"/>
           </AppButton>
@@ -47,4 +46,8 @@
       </div>
     </div>
   </template>
+
+  <style scoped>
+
+  </style>
   
