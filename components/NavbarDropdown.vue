@@ -4,9 +4,9 @@
             <li> 
                 <Icon name="uil:bars" class="h-[24px] w-[24px]" @click="toggle"/>
             </li>
-            <li v-if="active" :class="{'active-link': active}"><NuxtLink to="/courses">Modules</NuxtLink></li>
-            <li v-if="active" :class="{'active-link': active}"><NuxtLink to="/about">About</NuxtLink></li>
-            <li v-if="active" :class="{'active-link': active}"><NuxtLink to="/signup">Sign Up</NuxtLink></li>
+            <li v-if="active" :class="{'active-link': active}"><AppLink to="/courses">Modules</AppLink></li>
+            <li v-if="active" :class="{'active-link': active}"><AppLink to="/about">About</AppLink></li>
+            <li v-if="active" :class="{'active-link': active}"><AppLink to="/signup">Sign Up</AppLink></li>
         </div>
     </ul>
 </template>

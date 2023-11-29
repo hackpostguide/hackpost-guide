@@ -13,10 +13,10 @@
       <!-- Need to fix: turn into a toggle menu for mobile screens  -->
       <div class="col-start-6 col-end-11 flex items-center justify-end mobileoff">
         <ul class="flex gap-9">
-          <li><NuxtLink to="/courses">Modules</NuxtLink></li>
-          <li><NuxtLink to="/about">About</NuxtLink></li>
+          <li><AppLink to="/courses">Modules</AppLink></li>
+          <li><AppLink to="/about">About</AppLink></li>
           <!-- Will implement firebase sign-in later -->
-          <li><NuxtLink to="/signup" class="btn">Sign Up</NuxtLink></li>
+          <li><AppButton to="/signup" class="btn">Sign Up</AppButton></li>
         </ul>
       </div>
       <div class="col-start-10 col-end-11 flex items-center justify-end mobileon">
