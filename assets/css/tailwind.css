@@ -59,7 +59,7 @@
     transition: border-color 0.3s; /* Add transition for border-color */
 
     &:hover {
-      border-color: var(--primary); /* Change border color on hover */
+      border-color: var(--blue); /* Change border color on hover */
     }
   }
 
@@ -104,6 +104,7 @@
     --secondary: #f5cfa8;
     --accent: #d29914;
     --gray: #9a9fad;
+    --blue: #7645FF;
   }
   .dark { /*Dark mode:*/
     --text: #969ba9;
@@ -112,6 +113,7 @@
     --secondary: #a4681e;
     --accent: #ebb22d;
     --gray: #33353a;
+    --blue: #45aeff;
   }
 }
 
