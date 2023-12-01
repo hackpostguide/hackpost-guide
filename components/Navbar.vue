@@ -13,8 +13,8 @@
       <!-- Need to fix: turn into a toggle menu for mobile screens  -->
       <div class="col-start-6 col-end-11 flex items-center justify-end mobileoff">
         <ul class="flex gap-9">
-          <li><AppLink to="/courses">Modules</AppLink></li>
-          <li><AppLink to="/about">About</AppLink></li>
+          <li><AppButton to="/courses" buttonStyle="transparent">Modules</AppButton></li>
+          <li><AppButton to="/about" buttonStyle="transparent">About</AppButton></li>
           <!-- Will implement firebase sign-in later -->
           <li><AppButton to="/signup" class="btn">Sign Up</AppButton></li>
         </ul>
