@@ -1,11 +1,11 @@
 <template>
     <div class="grid grid-cols-12">
-    <section class="my-3 col-start-2 col-end-5">
+    <section class="my-8 sm:my-3 col-start-2 col-end-5">
       <AppButton buttonStyle="transparent" to="/courses" class="inline-flex align-center">
           <Icon name="uil:angle-left-b" class="h-[24px] w-[24px]"/>
       </AppButton>
     </section>
-      <div class="my-8 flex flex-col items-center col-start-1 col-end-12">
+      <div class="flex flex-col items-center m-8 col-start-1 col-end-12 max-w-xs sm:max-w-7xl ">
         <div class="text-center"> 
           <p class="Heading2 my-4">Blog Post</p>
           <p class="bodyText">By me</p>
