@@ -30,6 +30,11 @@
       <button @click="connectWithGitHub" class="btn-minor m-5">GitHub</button>
       <button @click="connectWithGoogle" class="btn-minor m-5">Google</button>
     </div>
+
+    <div class="mt-8 text-center">
+      <h2 class="Heading3">Or log instead:</h2>
+        <AppButton to="/login" class="btn-minor m-5">Login</AppButton>
+    </div>
   </div>
 </template>
 
