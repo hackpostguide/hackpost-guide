@@ -2,7 +2,7 @@
   <div class="flex flex-col items-center justify-center min-h-screen">
     <h1 class="Heading2">Sign Up</h1>
     <form @submit="submitForm">
-        <div class="py-5 w-full max-w-md">
+        <div class="py-5">
             <label for="name" class="bodyText">Name: </label>
             <input type="text" id="name" v-model="name" required>
         </div>

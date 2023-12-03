@@ -87,12 +87,12 @@
   <style lang="css">
 
     /* For debugging purposes:  */
-    [class*="col-"] {
+    /* [class*="col-"] { */
       /* border-width: 1px; */
-    }
-    .grid {
+    /* } */
+    /* .grid { */
       /* border: 1px solid blue; */
-    }
+    /* } */
 
   </style>
   
