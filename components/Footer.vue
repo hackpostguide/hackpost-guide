@@ -113,8 +113,8 @@ const navigation = {
 </script>
 
 <style lang="scss" scoped>
-    [class*="col-"] {
+    // [class*="col-"] {
         /* border: 1px solid red; */
         //border-width: 1px;
-    }
+    // }
 </style>

@@ -5,4 +5,4 @@ export const SOCIALS = {
     youtube: 'https://www.youtube.com/',
     instagram: 'https://www.instagram.com/',
     email: 'mailto:hackpost.guide@gmail.com',
-} as const
+} as const;
