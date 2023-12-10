@@ -11,6 +11,7 @@ export default defineNuxtConfig({
       '@nuxtjs/tailwindcss',
       '@nuxtjs/color-mode',
       'nuxt-icon',
+      'nuxt-vuefire',
     ],
 
   //colorMode module configurations
