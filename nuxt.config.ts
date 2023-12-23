@@ -14,6 +14,16 @@ export default defineNuxtConfig({
       'nuxt-vuefire',
     ],
 
+    // vuefire: {
+    //   config: {
+    //     apiKey: '...',
+    //     authDomain: '...',
+    //     projectId: '...',
+    //     appId: '...',
+    //     // there could be other properties depending on the project
+    //   },
+    // },
+
   //colorMode module configurations
   // https://color-mode.nuxtjs.org
   colorMode: {
