@@ -13,21 +13,22 @@ export default defineNuxtConfig({
       '@nuxtjs/tailwindcss',
       '@nuxtjs/color-mode',
       'nuxt-icon',
-      'nuxt-vuefire',
+      // 'nuxt-vuefire',
+
     ],
 
-    vuefire: {
-      config: {
-        apiKey: process.env.FIREBASE_API_KEY,
-        authDomain: process.env.FIREBASE_AUTH_DOMAIN,
-        projectId: process.env.FIREBASE_PROJECT_ID,
-        appId: process.env.FIREBASE_APP_ID,
-        // there could be other properties depending on the project
-      },
-      auth: {
-        enabled: true
-      },
-    },
+    // vuefire: {
+    //   config: {
+    //     apiKey: process.env.FIREBASE_API_KEY,
+    //     authDomain: process.env.FIREBASE_AUTH_DOMAIN,
+    //     projectId: process.env.FIREBASE_PROJECT_ID,
+    //     appId: process.env.FIREBASE_APP_ID,
+    //     // there could be other properties depending on the project
+    //   },
+    //   auth: {
+    //     enabled: true
+    //   },
+    // },
 
   //colorMode module configurations
   // https://color-mode.nuxtjs.org
