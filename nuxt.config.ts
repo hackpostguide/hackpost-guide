@@ -17,7 +17,6 @@ export default defineNuxtConfig({
     ],
 
     vuefire: {
-      auth: true, // enable Firebase Authentication
       config: {
         apiKey: process.env.FIREBASE_API_KEY,
         authDomain: process.env.FIREBASE_AUTH_DOMAIN,
@@ -25,9 +24,9 @@ export default defineNuxtConfig({
         appId: process.env.FIREBASE_APP_ID,
         // there could be other properties depending on the project
       },
-      // auth: {
-      //   enabled: true
-      // },
+      auth: {
+        enabled: true
+      },
     },
 
   //colorMode module configurations
