@@ -5,6 +5,8 @@ export default defineNuxtConfig({
   //enable nuxt devtools
   devtools: { enabled: true },
 
+  ssr: false, //disable server side rendering
+
   //existing modules in use 
     modules: [
       '@nuxt/content',
@@ -14,15 +16,19 @@ export default defineNuxtConfig({
       'nuxt-vuefire',
     ],
 
-    // vuefire: {
-    //   config: {
-    //     apiKey: '...',
-    //     authDomain: '...',
-    //     projectId: '...',
-    //     appId: '...',
-    //     // there could be other properties depending on the project
-    //   },
-    // },
+    vuefire: {
+      auth: true, // enable Firebase Authentication
+      config: {
+        apiKey: process.env.FIREBASE_API_KEY,
+        authDomain: process.env.FIREBASE_AUTH_DOMAIN,
+        projectId: process.env.FIREBASE_PROJECT_ID,
+        appId: process.env.FIREBASE_APP_ID,
+        // there could be other properties depending on the project
+      },
+      // auth: {
+      //   enabled: true
+      // },
+    },
 
   //colorMode module configurations
   // https://color-mode.nuxtjs.org
@@ -44,6 +50,11 @@ export default defineNuxtConfig({
   //     }
   //   }
   // },
+
+  plugins: [
+    // '~/plugins/firebase.js',
+    // '~/plugins/auth.js'
+  ],
 
   //tailwind css module configurations
   tailwindcss: {
