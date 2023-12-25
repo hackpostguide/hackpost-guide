@@ -1,22 +1,9 @@
-<template>
-    <div>
-        <h1 class="Heading3">Login Test </h1>
-        <section id="whenSignedOut">
-            <button id="signInBtn" class="btn">Sign in with Google</button>
-        </section>
-        <section id="whenSignedIn" hidden="true">
-            <div id="userDetails"></div>
-            <button id="signOutBtn" class="btn">Sign Out</button>
-        </section>
-    </div>
-</template>
-
-
-<script lang="ts">
+<script setup lang="ts">
+    
     // Import the functions you need from the SDKs you need
     import { initializeApp } from "firebase/app";
     import { getAnalytics } from "firebase/analytics";
-    import { getAuth } from "firebase/auth";
+    import { getAuth, signInWithPopup, GoogleAuthProvider } from "firebase/auth";
     // TODO: Add SDKs for Firebase products that you want to use
     // https://firebase.google.com/docs/web/setup#available-libraries
 
@@ -41,37 +28,69 @@
     console.log("firebase initialized:");
     console.log(app);
 
-
-    import { signInWithPopup, GoogleAuthProvider } from "firebase/auth";
-
     const provider = new GoogleAuthProvider();
     console.log("provider created:");
-    signInWithPopup(auth, provider)
-    .then((result) => {
-        // This gives you a Google Access Token. You can use it to access the Google API.
-        const credential = GoogleAuthProvider.credentialFromResult(result);
-        const token = credential?.accessToken;
-        // The signed-in user info.
-        const user = result.user;
-        // IdP data available using getAdditionalUserInfo(result)
-        // ...
-    }).catch((error) => {
-        // Handle Errors here.
-        const errorCode = error.code;
-        const errorMessage = error.message;
-        // The email of the user's account used.
-        const email = error.customData.email;
-        // The AuthCredential type that was used.
-        const credential = GoogleAuthProvider.credentialFromError(error);
-        // ...
-    });
 
-
-
-
+    let signedIn = ref(auth.currentUser);
     
-    
+
+    function signInWithGoogle() {
+        console.log("signing in with google");
+        signInWithPopup(auth, provider)
+            .then((result) => {
+                // This gives you a Google Access Token. You can use it to access the Google API.
+                const credential = GoogleAuthProvider.credentialFromResult(result);
+                const token = credential?.accessToken;
+                // The signed-in user info.
+                const user = result.user;
+                signedIn.value = user;
+                // ...
+                console.log("signed in with google");
+                console.log(user);
+            }).catch((error) => {
+                // Handle Errors here.
+                const errorCode = error.code;
+                const errorMessage = error.message;
+                // The email of the user's account used.
+                const email = error.email;
+                // The AuthCredential type that was used.
+                const credential = GoogleAuthProvider.credentialFromError(error);
+                // ...
+                console.log("error signing in with google");
+                console.log(error);
+            });
+    }
+
+    function signOut() {
+        auth.signOut().then(() => {
+            // Sign-out successful.
+            console.log("signed out");
+            signedIn.value = null;
+        }).catch((error) => {
+            // An error happened.
+            console.log("error signing out");
+            console.log(error);
+        });
+    }
+
+    // signInBtn?.addEventListener('click', signInWithGoogle);
 </script>
+
+<template>
+    <div>
+        <h1 v-if="signedIn != null" class="Heading3">Hello {{ signedIn.displayName }}!</h1>
+        <h1 v-else class="Heading3">Login Test</h1>
+        <!-- <section id="whenSignedOut"> -->
+        <button @click="signInWithGoogle" class="btn">Sign in with Google</button>
+        <!-- </section> -->
+        <!-- <section id="whenSignedIn" hidden="true"> -->
+            <!-- <div id="userDetails"></div> -->
+        <button @click="signOut" class="btn">Sign Out</button>
+        <!-- </section> -->
+    </div>
+</template>
+
+
 
 <style scoped>
 
