@@ -2,7 +2,7 @@
   <div class="flex flex-col items-center justify-center min-h-screen">
     <h1 class="Heading2">Sign Up</h1>
     <form @submit="submitForm">
-        <div class="py-5">
+        <!-- <div class="py-5">
             <label for="name" class="bodyText">Name: </label>
             <input type="text" id="name" v-model="name" required>
         </div>
@@ -10,7 +10,7 @@
         <div class="py-5">
             <label for="username" class="bodyText">Username: </label>
             <input type="text" id="username" v-model="username" required>
-        </div>
+        </div> -->
 
         <div class="py-5">
             <label for="email" class="bodyText">Email: </label>
@@ -39,11 +39,17 @@
 </template>
 
 <script>
+
+const email = ref('');
+const password = ref(null);
+const errorMsg = ref(null);
+const successMsg = ref(null);
+
 export default {
   data() {
     return {
-      name: '',
-      username: '',
+      // name: '',
+      // username: '',
       email: '',
       password: ''
     };
