@@ -10,13 +10,13 @@
     // Your web app's Firebase configuration
     // For Firebase JS SDK v7.20.0 and later, measurementId is optional
     const firebaseConfig = {
-        apiKey: "AIzaSyC3rSEjG07ENS2GmU4tgs-dMunIWP-pT18",
-        authDomain: "hackpost-6319a.firebaseapp.com",
-        projectId: "hackpost-6319a",
-        storageBucket: "hackpost-6319a.appspot.com",
-        messagingSenderId: "1092094960851",
-        appId: "1:1092094960851:web:d02484bd840fac13a86026",
-        measurementId: "G-ZZGYJQKPD8"
+        apiKey: "AIzaSyD0BItst5RuS0vY7TjAzcANMh1OKE7e_MQ",
+        authDomain: "hackpost-guide.firebaseapp.com",
+        projectId: "hackpost-guide",
+        storageBucket: "hackpost-guide.appspot.com",
+        messagingSenderId: "118368469097",
+        appId: "1:118368469097:web:6803e767e65920618662f8",
+        measurementId: "G-WTDDS3XCDR"
     };
     
 
