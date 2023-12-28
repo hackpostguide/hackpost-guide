@@ -23,6 +23,11 @@ import {
   useFirebaseAuth,
 } from 'vuefire'
 
+import { useCollection, useDocument, useFirestore } from 'vuefire'
+import { collection, doc, setDoc, writeBatch } from 'firebase/firestore'
+
+const db = useFirestore()
+
 //implement google sign in and others later
 // const googleAuthProvider = new GoogleAuthProvider()
 
@@ -47,21 +52,67 @@ watch(user, (user) => {
 })
 
 // new user
+const firstName = ref('');
+const lastName = ref('');
+const username = ref('');
+
 const email = ref('')
 const password = ref('')
+
+const usersRef = useCollection(collection(db, 'users'));
+const usernameRef = useCollection(collection(db, 'usernames'));
+
 function signUp() {
-  // link to an existing anonymous account
-  // if (user.value?.isAnonymous) {
-  //   credential = EmailAuthProvider.credential(email.value, password.value)
+  // Check if username is unique
+  
+  if(!username.value) {
+    throw new Error("Username cannot be empty");
+  }
+  else if(username.value.length < 3){
+    throw new Error("Username must be at least 3 characters");
+  }
+  else if(username.value.length > 20){
+    throw new Error("Username must be less than 20 characters");
+  }
+  else if(!/^[a-zA-Z0-9_]+$/.test(username.value)){
+    throw new Error("Username can only contain letters, numbers, and underscores");
+  }
 
-  //   return linkWithCredential(user.value, credential).then(() => {
-  //     return signInWithEmailAndPassword(auth, email.value, password.value)
-  //   })
-  // }
-
-  // create a regular account
-  return createUserWithEmailAndPassword(auth, email.value, password.value)
+  const usernameDoc = useDocument(doc(db, 'usernames', username.value));
+  // useDocument(doc(db, 'usernames', username.value)).then(doc => {
+  if (usernameDoc == null) {
+    alert("Username is already taken");
+    throw new Error("Username is already taken");
+  } else {
+    alert("Username is available");
+    return createUserWithEmailAndPassword(auth, email.value, password.value)
+      .then((userCredential) => {
+        // User created, now store the additional info in Firestore
+        let displayName = firstName.value + " " + lastName.value;
+        saveUserInfo(userCredential.user, displayName, username.value);
+        // Optionally handle the username separately to enforce uniqueness
+        setDoc(doc(db, 'usernames', (username.value)), { uid: userCredential.user.uid });
+      });
+  }
+  // }).catch((error: any) => {
+  //   console.error("Signup failed:", error);
+  //   // Handle the error, e.g., display a message to the user
+  // });
 }
+
+function saveUserInfo(user: any, displayName: string, username: string) {
+  const batch = writeBatch(db);
+  setDoc(doc(db, 'users', user.uid), {
+    displayName: displayName,
+    username: username,
+    email: user.email
+  }).then(() => {
+    console.log("User information saved!");
+  }).catch((error: any) => {
+    console.error("Error saving user information:", error);
+  });
+}
+
 
 // function signinPopup() {
 //   return signInWithPopup(auth, googleAuthProvider).then((result) => {
@@ -102,6 +153,18 @@ async function changeUserImage() {
 
     <form @submit.prevent="signUp()">
       <fieldset>
+        <div class="py-5">
+          <label for="firstName" class="bodyText">First Name: </label>
+          <input v-model="firstName" type="text" required />
+        </div>
+        <div class="py-5">
+          <label for="lastName" class="bodyText">Last Name: </label>
+          <input v-model="lastName" type="text" required />
+        </div>
+        <div class="py-5">
+          <label for="username" class="bodyText">Username: </label>
+          <input v-model="username" type="text" required />
+        </div>
         <div class="py-5">
           <label for="email" class="bodyText">Email: </label>
           <input v-model="email" type="email" required />
