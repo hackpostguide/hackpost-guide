@@ -11,148 +11,149 @@ import {
   GoogleAuthProvider,
   updateCurrentUser,
   updateProfile,
+  sendEmailVerification,
   AuthCredential,
   getRedirectResult,
 } from 'firebase/auth'
 
-import { ref } from 'vue'
-
-import { 
-  updateCurrentUserProfile,
+import { ref, watch } from 'vue';
+import {
   useCurrentUser,
   useFirebaseAuth,
-} from 'vuefire'
+  updateCurrentUserProfile,
+} from 'vuefire';
+import { useCollection, useDocument } from 'vuefire';
+import { collection, doc, setDoc, getDoc, writeBatch } from 'firebase/firestore';
 
-import { useCollection, useDocument, useFirestore } from 'vuefire'
-import { collection, doc, setDoc, writeBatch } from 'firebase/firestore'
+const db = useFirestore();
+const auth = useFirebaseAuth()!;
+const user = useCurrentUser();
+let credential: AuthCredential | null = null;
 
-const db = useFirestore()
+const route = useRoute();
+const router = useRouter();
 
-//implement google sign in and others later
-// const googleAuthProvider = new GoogleAuthProvider()
-
-// auth is null on the server but it's fine as long as we don't use it. So we force the type to be non-null here because
-// auth is only used within methods that are only called on the client
-const auth = useFirebaseAuth()!
-const user = useCurrentUser()
-let credential: AuthCredential | null = null
-
-const route = useRoute()
-const router = useRouter()
-
-// automatically redirect the user if they are logged in but was rejected on the server because of an outdated cookie
+// Redirect if already logged in
 watch(user, (user) => {
   if (
     user &&
     route.query.redirect &&
     typeof route.query.redirect === 'string'
   ) {
-    router.push(route.query.redirect)
+    router.push(route.query.redirect);
   }
-})
+});
 
-// new user
+// New user refs
 const firstName = ref('');
 const lastName = ref('');
 const username = ref('');
-
-const email = ref('')
-const password = ref('')
+const email = ref('');
+const password = ref('');
+const errorMessage = ref(''); // Holds error messages for user feedback
 
 const usersRef = useCollection(collection(db, 'users'));
 const usernameRef = useCollection(collection(db, 'usernames'));
 
-function signUp() {
-  // Check if username is unique
-  
-  if(!username.value) {
-    throw new Error("Username cannot be empty");
-  }
-  else if(username.value.length < 3){
-    throw new Error("Username must be at least 3 characters");
-  }
-  else if(username.value.length > 20){
-    throw new Error("Username must be less than 20 characters");
-  }
-  else if(!/^[a-zA-Z0-9_]+$/.test(username.value)){
-    throw new Error("Username can only contain letters, numbers, and underscores");
-  }
+async function signUp() {
+  try {
+    // Validate username and password constraints
+    if (!username.value) {
+      errorMessage.value = "Username cannot be empty";
+      return "Username cannot be empty";
+    } else if (username.value.length < 3) {
+      errorMessage.value = "Username must be at least 3 characters";
+      return "Username must be at least 3 characters";
+    } else if (username.value.length > 20) {
+      errorMessage.value = "Username must be less than 20 characters";
+      return "Username must be less than 20 characters";
+    } else if (!/^[a-zA-Z0-9_]+$/.test(username.value)) {
+      errorMessage.value = "Username can only contain letters, numbers, and underscores";
+      return "Username can only contain letters, numbers, and underscores";
+    } else if (password.value.length < 6) {
+      errorMessage.value = "Password must be at least 6 characters";
+      return "Password must be at least 6 characters";
+    }
 
-  const usernameDoc = useDocument(doc(db, 'usernames', username.value));
-  // useDocument(doc(db, 'usernames', username.value)).then(doc => {
-  console.log(usernameDoc);
-  if (usernameDoc.value != undefined) {
-    alert("Username is already taken");
-    return new Error("Username is already taken");
-  } else {
-    alert("Username is available");
-    return createUserWithEmailAndPassword(auth, email.value, password.value)
-      .then((userCredential) => {
-        // User created, now store the additional info in Firestore
-        let displayName = firstName.value + " " + lastName.value;
-        saveUserInfo(userCredential.user, displayName, username.value);
-        // Optionally handle the username separately to enforce uniqueness
-        setDoc(doc(db, 'usernames', (username.value)), { uid: userCredential.user.uid });
-      });
+    // Check if the username is already taken
+    const usernameDocRef = doc(db, 'usernames', username.value);
+    const docSnapshot = await getDoc(usernameDocRef);
+    if (docSnapshot.exists()) {
+      errorMessage.value = "Username is already taken";
+      return "Username is already taken";
+    }
+
+    // Create user with email and password
+    const userCredential = await createUserWithEmailAndPassword(auth, email.value, password.value);
+
+    // Send verification email
+    await sendEmailVerification(userCredential.user);
+    console.log("Verification email sent.");
+
+    return "User registered successfully, verification email sent.";
+  } catch (error: any) {
+    errorMessage.value = error.message;
+    console.error("Signup failed:", error);
+    return "Registration failed: " + error.message;
   }
-  // }).catch((error: any) => {
-  //   console.error("Signup failed:", error);
-  //   // Handle the error, e.g., display a message to the user
-  // });
 }
 
-function saveUserInfo(user: any, displayName: string, username: string) {
+async function signIn(){
+  if (auth.currentUser) {
+    await checkEmailVerification(auth.currentUser);
+  }
+  signInWithEmailAndPassword(auth, email.value, password.value);
+  router.push('/'); // Redirect the user to a confirmed page
+}
+
+async function checkEmailVerification(user: { reload?: any; emailVerified?: any; uid: any; email?: any; }) {
+  await user.reload(); // Refresh the user's auth object
+  if (user.emailVerified) {
+    // Email is verified, proceed to save the user information
+    let displayName = firstName.value + " " + lastName.value;
+    try {
+      await saveUserInfo(user, displayName, username.value);
+      // Sign out after successfully saving user info
+      await auth.signOut();
+    } catch (error: any) {
+      console.error("Error saving user information:", error);
+      errorMessage.value = "Failed to save user information: " + error.message;
+    }
+  } else {
+    // Email not yet verified, you might want to check again or prompt the user
+    errorMessage.value = "Please verify your email to complete registration.";
+  }
+}
+
+function saveUserInfo(user: { reload?: any; emailVerified?: any; uid: any; email?: any; }, displayName: any, username: string) {
+  // Batch write to save user info and username
   const batch = writeBatch(db);
   const userRef = doc(db, 'users', user.uid);
   batch.set(userRef, {
     displayName: displayName,
     username: username,
-    email: user.email
+    email: user.email,
   });
 
   const usernameRef = doc(db, 'usernames', username);
   batch.set(usernameRef, { uid: user.uid });
 
-  // Commit the batch
   batch.commit().then(() => {
     console.log("User information saved!");
-  }).catch((error: any) => {
+  }).catch((error) => {
     console.error("Error saving user information:", error);
+    errorMessage.value = "Failed to save user information: " + error.message;
   });
 }
-
-
-// function signinPopup() {
-//   return signInWithPopup(auth, googleAuthProvider).then((result) => {
-//     const googleCredential = GoogleAuthProvider.credentialFromResult(result)
-//     credential = googleCredential
-//     const token = googleCredential?.accessToken
-//     console.log('Got Google token', token)
-//     console.log('Got googleCredential', googleCredential)
-//   })
-// }
 
 async function changeUserImage() {
   if (user.value) {
     await updateCurrentUserProfile({
       photoURL: 'https://i.pravatar.cc/150?u=' + Date.now(),
-    })
-
+    });
   }
 }
 
-// function signinRedirect() {
-//   signInWithRedirect(auth, googleAuthProvider)
-// }
-
-// onMounted(() => {
-//   getRedirectResult(auth).then((creds) => {
-//     console.log('got creds', creds)
-//     if (creds) {
-//       // credential = creds.user.
-//     }
-//   })
-// })
 </script>
 
 <template>
@@ -185,9 +186,11 @@ async function changeUserImage() {
         <button class="btn">Create User</button>
       </fieldset>
     </form>
+    <p v-if="errorMessage">{{ errorMessage }}</p>
+
 
     <h1 class="Heading2">Sign In</h1>
-    <form @submit.prevent="signInWithEmailAndPassword(auth, email, password)">
+    <form @submit.prevent="signIn()">
       <fieldset>
 
         <div class="py-5">
