@@ -80,9 +80,10 @@ function signUp() {
 
   const usernameDoc = useDocument(doc(db, 'usernames', username.value));
   // useDocument(doc(db, 'usernames', username.value)).then(doc => {
-  if (usernameDoc == null) {
+  console.log(usernameDoc);
+  if (usernameDoc.value != undefined) {
     alert("Username is already taken");
-    throw new Error("Username is already taken");
+    return new Error("Username is already taken");
   } else {
     alert("Username is available");
     return createUserWithEmailAndPassword(auth, email.value, password.value)
@@ -102,11 +103,18 @@ function signUp() {
 
 function saveUserInfo(user: any, displayName: string, username: string) {
   const batch = writeBatch(db);
-  setDoc(doc(db, 'users', user.uid), {
+  const userRef = doc(db, 'users', user.uid);
+  batch.set(userRef, {
     displayName: displayName,
     username: username,
     email: user.email
-  }).then(() => {
+  });
+
+  const usernameRef = doc(db, 'usernames', username);
+  batch.set(usernameRef, { uid: user.uid });
+
+  // Commit the batch
+  batch.commit().then(() => {
     console.log("User information saved!");
   }).catch((error: any) => {
     console.error("Error saving user information:", error);
