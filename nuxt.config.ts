@@ -14,6 +14,7 @@ export default defineNuxtConfig({
       '@nuxtjs/color-mode',
       'nuxt-icon',
       'nuxt-vuefire',
+      '@pinia/nuxt',
 
     ],
 

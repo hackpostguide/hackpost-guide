@@ -20,6 +20,7 @@
     "@firebase/app-types": "^0.9.0",
     "@nuxt-awesome/theme": "^2.0.6",
     "@nuxt/content": "^2.8.5",
+    "@pinia/nuxt": "^0.5.1",
     "firebase": "^10.7.1",
     "firebase-admin": "^11.11.1",
     "firebaseui": "^6.1.0",
