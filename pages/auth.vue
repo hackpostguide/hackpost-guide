@@ -1,3 +1,4 @@
+<!-- For demo purposes only, delete later; code retrieved from https://github.com/vuejs/vuefire/blob/main/packages/nuxt/playground/pages/authentication.vue -->
 <script lang="ts" setup>
 import {
   createUserWithEmailAndPassword,

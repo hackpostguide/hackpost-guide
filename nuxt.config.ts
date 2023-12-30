@@ -39,6 +39,10 @@ export default defineNuxtConfig({
     fallback: 'light',
   },
 
+  // pinia: {
+  //   storesDirs: ['./stores/**', './custom-folder/stores/**'],
+  // },
+
   // https://content.nuxtjs.org
   // This doesn't work for some reason:
   // content: {
@@ -51,11 +55,6 @@ export default defineNuxtConfig({
   //     }
   //   }
   // },
-
-  plugins: [
-    // '~/plugins/firebase.js',
-    // '~/plugins/auth.js'
-  ],
 
   //tailwind css module configurations
   tailwindcss: {

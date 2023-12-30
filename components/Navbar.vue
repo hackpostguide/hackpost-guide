@@ -16,7 +16,7 @@
           <li><AppButton to="/courses" buttonStyle="transparent">Modules</AppButton></li>
           <!-- Display user's name if signed in -->
           <li><AppButton to="/signup" buttonStyle="transparent">Signup</AppButton></li>
-          <li><AppButton to="/login" buttonStyle="transparent">{{ user ? user.displayName : 'About' }}</AppButton></li>
+          <li><AppButton to="/login" buttonStyle="transparent">{{ useCurrentUser() ? 'signed in' : 'About' }}</AppButton></li>
           <!-- Display "Sign Out" if user is signed in, else "Sign In" -->
           <li>
             <AppButton v-if="useCurrentUser()" @click="logOut()" class="btn">Sign Out</AppButton>
@@ -42,11 +42,13 @@
       signOut,
     } from 'firebase/auth';
     
-    import {  useFirebaseAuth, } from 'vuefire';
+    import { useFirebaseAuth, } from 'vuefire';
+    import { useUserStore } from '~/stores/user';
 
     const auth = useFirebaseAuth();
+    const userStore = useUserStore();
 
-    useColorMode().preference = 'dark';
+    useColorMode().preference = 'dark'; 
     type Theme = 'light' | 'dark';
 
     const themeDropdownOpen = ref(false);
@@ -69,22 +71,22 @@
     // themeDropdownOpen.value = !themeDropdownOpen.value;
     // };
     
-    import { computed, defineProps } from 'vue';
+    // import { computed, defineProps } from 'vue';
 
     // Define the 'user' prop expected from the parent component
-    const props = defineProps({
-      user: Object
-    });
+    // const props = defineProps({
+    //   user: Object
+    // });
 
-    import { watchEffect } from 'vue';
+    // import { watchEffect } from 'vue';
 
-    watchEffect(() => {
-      console.log('User:', props.user);
-    });
+    // watchEffect(() => {
+    //   console.log('User:', props.user);
+    // });
 
 
     // Computed property to determine if the user is signed in
-    const isUserSignedIn = computed(() => !!props.user);
+    // const isUserSignedIn = computed(() => !!props.user);
 
 
 </script>
