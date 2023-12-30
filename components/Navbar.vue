@@ -14,9 +14,14 @@
       <div class="col-start-6 col-end-11 flex items-center justify-end mobileoff">
         <ul class="flex gap-9">
           <li><AppButton to="/courses" buttonStyle="transparent">Modules</AppButton></li>
-          <li><AppButton to="/login" buttonStyle="transparent">About</AppButton></li>
-          <!-- Will implement firebase sign-in later -->
-          <li><AppButton to="/signup" class="btn">Sign Up</AppButton></li>
+          <!-- Display user's name if signed in -->
+          <li><AppButton to="/signup" buttonStyle="transparent">Signup</AppButton></li>
+          <li><AppButton to="/login" buttonStyle="transparent">{{ user ? user.displayName : 'About' }}</AppButton></li>
+          <!-- Display "Sign Out" if user is signed in, else "Sign In" -->
+          <li>
+            <AppButton v-if="useCurrentUser()" @click="logOut()" class="btn">Sign Out</AppButton>
+            <AppButton v-else to="/signup" class="btn">Sign In</AppButton>
+          </li>
         </ul>
       </div>
       <div class="col-start-10 col-end-11 flex items-center justify-end mobileon">
@@ -33,21 +38,53 @@
 </template>
 
 <script setup lang="ts" async>
+    import {
+      signOut,
+    } from 'firebase/auth';
+    
+    import {  useFirebaseAuth, } from 'vuefire';
+
+    const auth = useFirebaseAuth();
+
     useColorMode().preference = 'dark';
     type Theme = 'light' | 'dark';
 
     const themeDropdownOpen = ref(false);
     const themeDropdownContainer = ref<HTMLElement | null>(null);
 
-    const setColorTheme = (newTheme: Theme) => {
-    useColorMode().preference = newTheme;
-    themeDropdownOpen.value = false;
-    };
+    function logOut() {
+      if (auth) {
+        signOut(auth);
+      }
+      console.log(useCurrentUser());
+      console.log('User signed out');
+    }
 
-    const toggleThemeDropdown = () => {
-    themeDropdownOpen.value = !themeDropdownOpen.value;
-    };
+    // const setColorTheme = (newTheme: Theme) => {
+    // useColorMode().preference = newTheme;
+    // themeDropdownOpen.value = false;
+    // };
+
+    // const toggleThemeDropdown = () => {
+    // themeDropdownOpen.value = !themeDropdownOpen.value;
+    // };
     
+    import { computed, defineProps } from 'vue';
+
+    // Define the 'user' prop expected from the parent component
+    const props = defineProps({
+      user: Object
+    });
+
+    import { watchEffect } from 'vue';
+
+    watchEffect(() => {
+      console.log('User:', props.user);
+    });
+
+
+    // Computed property to determine if the user is signed in
+    const isUserSignedIn = computed(() => !!props.user);
 
 
 </script>
