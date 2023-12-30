@@ -16,7 +16,7 @@
           <li><AppButton @click="getDisplayName()" buttonStyle="transparent">Modules</AppButton></li>
           <!-- Display user's name if signed in -->
           <li><AppButton to="/about" buttonStyle="transparent">About</AppButton></li>
-          <li><AppButton to="/login" buttonStyle="transparent">{{ isUserSignedIn() ? displayName : 'Sign In' }}</AppButton></li>
+          <li><AppButton to="/signup" buttonStyle="transparent">{{ isUserSignedIn() ? displayName : 'Sign In' }}</AppButton></li>
           <!-- Display "Sign Out" if user is signed in, else "Sign In" -->
           <li>
             <AppButton v-if="isUserSignedIn()" @click="logOut()" class="btn">Sign Out</AppButton>

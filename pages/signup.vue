@@ -44,6 +44,9 @@ watch(user, (user) => {
   }
 });
 
+
+//for some reason signing up and signing in are taking up 50 reads each - fix! 
+
 // New user refs
 const firstName = ref('');
 const lastName = ref('');
@@ -64,8 +67,8 @@ async function signUp() {
     } else if (username.value.length < 3) {
       errorMessage.value = "Username must be at least 3 characters";
       return "Username must be at least 3 characters";
-    } else if (username.value.length > 20) {
-      errorMessage.value = "Username must be less than 20 characters";
+    } else if (username.value.length > 15) {
+      errorMessage.value = "Username must be less than 15 characters";
       return "Username must be less than 20 characters";
     } else if (!/^[a-zA-Z0-9_]+$/.test(username.value)) {
       errorMessage.value = "Username can only contain letters, numbers, and underscores";
