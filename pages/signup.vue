@@ -102,8 +102,10 @@ async function signIn(){
   if (auth.currentUser) {
     await checkEmailVerification(auth.currentUser);
   }
-  signInWithEmailAndPassword(auth, email.value, password.value);
-  router.push('/'); // Redirect the user to a confirmed page
+  else{
+    signInWithEmailAndPassword(auth, email.value, password.value);
+    router.push('/'); // Redirect the user to a confirmed page
+  }
 }
 
 async function checkEmailVerification(user: { reload?: any; emailVerified?: any; uid: any; email?: any; }) {
