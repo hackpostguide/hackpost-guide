@@ -48,7 +48,7 @@
     const auth = useFirebaseAuth();
     const userStore = useUserStore();
 
-    useColorMode().preference = 'dark'; 
+    useColorMode().preference = 'light'; 
     type Theme = 'light' | 'dark';
 
     const themeDropdownOpen = ref(false);
