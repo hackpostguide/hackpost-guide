@@ -47,17 +47,21 @@ export const useUserStore = defineStore('user', () => {
 
     async function getData() {
         if (user.value) {
+            // console.log('user uid: ', user.value.uid);
             const docRef = doc(db, 'users', user.value.uid);
             const docSnap = await getDoc(docRef);
             if (docSnap.exists()) {
-                console.log('Document data:', docSnap.data());
+                // console.log('Document data:', docSnap.data());
                 return docSnap.data();
             } else {
                 // doc.data() will be undefined in this case
                 console.log('No user found');
             }
         }
-        else return null;
+        else{
+            console.log('No user found');
+            return null;
+        }
     }
     
 

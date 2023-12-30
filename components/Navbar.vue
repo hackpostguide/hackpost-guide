@@ -13,14 +13,14 @@
       <!-- Need to fix: turn into a toggle menu for mobile screens  -->
       <div class="col-start-6 col-end-11 flex items-center justify-end mobileoff">
         <ul class="flex gap-9">
-          <li><AppButton to="/courses" buttonStyle="transparent">Modules</AppButton></li>
+          <li><AppButton @click="getDisplayName()" buttonStyle="transparent">Modules</AppButton></li>
           <!-- Display user's name if signed in -->
-          <li><AppButton to="/signup" buttonStyle="transparent">Signup</AppButton></li>
-          <li><AppButton to="/login" buttonStyle="transparent">{{ useCurrentUser() ? 'signed in' : 'About' }}</AppButton></li>
+          <li><AppButton to="/about" buttonStyle="transparent">About</AppButton></li>
+          <li><AppButton to="/login" buttonStyle="transparent">{{ isUserSignedIn() ? displayName : 'Sign In' }}</AppButton></li>
           <!-- Display "Sign Out" if user is signed in, else "Sign In" -->
           <li>
-            <AppButton v-if="useCurrentUser()" @click="logOut()" class="btn">Sign Out</AppButton>
-            <AppButton v-else to="/signup" class="btn">Sign In</AppButton>
+            <AppButton v-if="isUserSignedIn()" @click="logOut()" class="btn">Sign Out</AppButton>
+            <AppButton v-else to="/signup" class="btn">Sign Up</AppButton>
           </li>
         </ul>
       </div>
@@ -41,25 +41,46 @@
     import {
       signOut,
     } from 'firebase/auth';
+
+    import { ref } from 'vue';
+
+    // Reactive property for the display name
+    const displayName = ref('');
     
     import { useFirebaseAuth, } from 'vuefire';
     import { useUserStore } from '~/stores/user';
 
     const auth = useFirebaseAuth();
+
+    //probably could simplify this...
     const userStore = useUserStore();
+    let data = userStore.getData();
+    // const displayName = data.displayName;
+    function getDisplayName() {
+      data = userStore.getData();
+      data.then((resolvedData) => {
+        console.log(resolvedData?.displayName);
+        displayName.value = resolvedData?.displayName || 'Not Logged In'; // Set the display name or a default
+        // return resolvedData?.displayName;
+      });
+    } 
+
 
     useColorMode().preference = 'light'; 
     type Theme = 'light' | 'dark';
 
-    const themeDropdownOpen = ref(false);
-    const themeDropdownContainer = ref<HTMLElement | null>(null);
+    //check if user is signed in
+    function isUserSignedIn() {
+      return useCurrentUser().value != null;
+    }
 
     function logOut() {
       if (auth) {
         signOut(auth);
       }
-      console.log(useCurrentUser());
       console.log('User signed out');
+      // console.log(useCurrentUser().value);
+      // console.log(data);
     }
 
     // const setColorTheme = (newTheme: Theme) => {
