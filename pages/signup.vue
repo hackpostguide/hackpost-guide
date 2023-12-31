@@ -22,7 +22,7 @@ import {
   useFirebaseAuth,
   updateCurrentUserProfile,
 } from 'vuefire';
-import { useCollection, useDocument } from 'vuefire';
+// import { useCollection, useDocument } from 'vuefire';
 import { collection, doc, setDoc, getDoc, writeBatch } from 'firebase/firestore';
 
 const db = useFirestore();
@@ -30,19 +30,19 @@ const auth = useFirebaseAuth()!;
 const user = useCurrentUser();
 let credential: AuthCredential | null = null;
 
-const route = useRoute();
+// const route = useRoute();
 const router = useRouter();
 
 // Redirect if already logged in
-watch(user, (user) => {
-  if (
-    user &&
-    route.query.redirect &&
-    typeof route.query.redirect === 'string'
-  ) {
-    router.push(route.query.redirect);
-  }
-});
+// watch(user, (user) => {
+//   if (
+//     user &&
+//     route.query.redirect &&
+//     typeof route.query.redirect === 'string'
+//   ) {
+//     router.push(route.query.redirect);
+//   }
+// });
 
 
 //for some reason signing up and signing in are taking up 50 reads each - fix! 
@@ -55,8 +55,8 @@ const email = ref('');
 const password = ref('');
 const errorMessage = ref(''); // Holds error messages for user feedback
 
-const usersRef = useCollection(collection(db, 'users'));
-const usernameRef = useCollection(collection(db, 'usernames'));
+// const usersRef = useCollection(collection(db, 'users'));
+// const usernameRef = useCollection(collection(db, 'usernames'));
 
 async function signUp() {
   try {
@@ -151,13 +151,13 @@ function saveUserInfo(user: { reload?: any; emailVerified?: any; uid: any; email
   });
 }
 
-async function changeUserImage() {
-  if (user.value) {
-    await updateCurrentUserProfile({
-      photoURL: 'https://i.pravatar.cc/150?u=' + Date.now(),
-    });
-  }
-}
+// async function changeUserImage() {
+//   if (user.value) {
+//     await updateCurrentUserProfile({
+//       photoURL: 'https://i.pravatar.cc/150?u=' + Date.now(),
+//     });
+//   }
+// }
 
 </script>
 
