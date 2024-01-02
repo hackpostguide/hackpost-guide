@@ -21,14 +21,16 @@ import { collection, doc, setDoc, getDoc, writeBatch } from 'firebase/firestore'
 
 export const useUserStore = defineStore('user', () => {
     // Reactive references
+    
     const db = useFirestore();
     const auth = useFirebaseAuth()!;
     const user = useCurrentUser(); // holds the current user state
 
     // const usersRef = useCollection(collection(db, 'users'));
 
-    const route = useRoute();
+    // const route = useRoute();
     const router = useRouter();
+
 
     // Auth methods
     const signIn = async (email: any, password: any) => {
@@ -72,4 +74,5 @@ export const useUserStore = defineStore('user', () => {
         signOut, // method to sign out
         getData,
     }
+    
 });
