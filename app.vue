@@ -6,7 +6,10 @@
 
       <div class="flex-grow p-1 sm:p-10 mt-11" :style="{ background: 'var(--background)' }">
           <!-- <Login /> -->
-          <NuxtPage /> <!--This is where the page content goes-->
+          <NuxtPage />
+          <!-- <Vueform>
+            <TextElement name="hello_world" label="Hello" placeholder="World" />
+          </Vueform> -->
       </div>
 
       <Footer />

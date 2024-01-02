@@ -15,6 +15,7 @@ export default defineNuxtConfig({
       'nuxt-icon',
       'nuxt-vuefire',
       '@pinia/nuxt',
+      '@vueform/nuxt',
 
     ],
 

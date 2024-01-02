@@ -88,6 +88,7 @@ async function signUp() {
 
     // Create user with email and password
     const userCredential = await createUserWithEmailAndPassword(auth, email.value, password.value);
+    //TODO: save user info first, then send verification email
 
     // Send verification email
     await sendEmailVerification(userCredential.user);
@@ -138,7 +139,7 @@ function saveUserInfo(user: { reload?: any; emailVerified?: any; uid: any; email
     displayName: displayName,
     username: username,
     email: user.email,
-  });
+  }); 
 
   const usernameRef = doc(db, 'usernames', username);
   batch.set(usernameRef, { uid: user.uid });
@@ -191,7 +192,7 @@ function saveUserInfo(user: { reload?: any; emailVerified?: any; uid: any; email
         <button class="btn">Create User</button>
       </fieldset>
     </form>
-    <p v-if="errorMessage">{{ errorMessage }}</p>
+    <p>{{ errorMessage }}</p>
 
 
     <h1 class="Heading2">Sign In</h1>

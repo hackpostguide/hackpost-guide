@@ -2,7 +2,10 @@
 module.exports = {
   content: [
     './nuxt.config.ts',
-    './content/**/*.md'
+    './content/**/*.md',
+    './vueform.config.ts', 
+    './node_modules/@vueform/vueform/themes/tailwind/**/*.vue',
+    './node_modules/@vueform/vueform/themes/tailwind/**/*.js',
   ],
   
   darkMode: 'class',
@@ -21,7 +24,8 @@ module.exports = {
    
   plugins: [
     require('@tailwindcss/typography'),
-    // ...
+    require('@vueform/vueform/tailwind'),
+
   ],
 }
 
