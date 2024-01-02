@@ -79,6 +79,7 @@ async function signUp() {
     }
 
     // Check if the username is already taken
+    //costs 1 doc read
     const usernameDocRef = doc(db, 'usernames', username.value);
     const docSnapshot = await getDoc(usernameDocRef);
     if (docSnapshot.exists()) {

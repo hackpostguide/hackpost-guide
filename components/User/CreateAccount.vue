@@ -96,7 +96,7 @@ export default {
           rules: [
             'required',
           ],
-          fieldName: 'Phone',
+          fieldName: 'Username',
           description: "You won't be able to change your username after you create your account",
         },
         email: {
@@ -134,6 +134,9 @@ export default {
         terms: {
           type: 'checkbox',
           text: 'I accept the Terms & Conditions & Privacy Policy',
+          rules: [
+            'required',
+          ],
         },
         marketing_emails: {
           type: 'checkbox',
@@ -166,6 +169,9 @@ export default {
           submits: true,
           align: 'center',
           full: true,
+          // rules: [
+          //   'required',
+          // ],
         },
         p_copy: {
           type: 'static',
@@ -186,8 +192,8 @@ export default {
         },
         textarea: {
           type: 'textarea',
-          label: 'Optional: add your own bio!',
-          default: '150 characters max',
+          placeholder: '150 characters max',
+          default: '',
         },
       },
     })

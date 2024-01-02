@@ -25,7 +25,7 @@ export const useUserStore = defineStore('user', () => {
     const auth = useFirebaseAuth()!;
     const user = useCurrentUser(); // holds the current user state
 
-    const usersRef = useCollection(collection(db, 'users'));
+    // const usersRef = useCollection(collection(db, 'users'));
 
     const route = useRoute();
     const router = useRouter();
