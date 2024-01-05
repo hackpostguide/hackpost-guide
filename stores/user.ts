@@ -102,9 +102,11 @@ export const useUserStore = defineStore('user', {
                         this.photoURL = profileData.photoURL || '';
                     } else {
                         this.clearUserProfile();
+                        this.authError = 'No user profile found in Firestore';
                         console.log('No user profile found in Firestore');
                     }
                 } catch (error) {
+                    this.authError = 'Error fetching user profile: ' + error;
                     console.error('Error fetching user profile:', error);
                 }
             }
