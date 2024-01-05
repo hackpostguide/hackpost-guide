@@ -14,6 +14,9 @@ import {
     sendEmailVerification,
     AuthCredential,
     getRedirectResult,
+    onAuthStateChanged,
+    User,
+    AuthError,
   } from 'firebase/auth'
 import { ref } from 'vue';
 import { useFirestore, useFirebaseAuth, useCollection } from 'vuefire'; 
@@ -37,12 +40,13 @@ export const useUserStore = defineStore('user', {
 
     state: () => {
         return {
-            user: useCurrentUser(), // holds the current user state
+            user: null as User | null,
             displayName: '',
             username: '',
             email: '',
             photoURL: '',
             emailVerified: false,
+            authError: '' as string | null,
         };
     },
     getters: {
@@ -65,31 +69,60 @@ export const useUserStore = defineStore('user', {
         getEmailVerified(state) {
             return state.emailVerified;
         },
+        isAuthenticated: (state) => state.user !== null && state.emailVerified,
     },
     actions: {
+        //setters 
+        setUser(payload: User | null) {
+        if (payload) {
+            this.user = payload;
+            this.displayName = payload.displayName || '';
+            this.email = payload.email || '';
+            this.photoURL = payload.photoURL || '';
+            this.emailVerified = payload.emailVerified;
+        } else {
+            this.user = null;
+            this.displayName = '';
+            this.email = '';
+            this.photoURL = '';
+            this.emailVerified = false;
+        }
+        },
+
         //sign in:
         async signIn(email: any, password: any) {
             if(this.emailVerified){
                 try {
-                    signInWithEmailAndPassword(auth, email.value, password.value);
-                    router.push('/'); // Redirect the user to a confirmed page
+                    const { user } = await signInWithEmailAndPassword(auth, email, password);
+                    this.setUser(user);
+                    this.authError = null;
+                    useRouter().push('/'); // customize route later
                 } catch (error) {
-                    console.error('Login failed:', error);
-                    // let the form component display the error
-                    return error;
+                    this.authError = (error as AuthError).message;
                 }
             }
             else{
                 console.log('Email not verified');
                 return 'Email not verified';
             }
-            this.user = useCurrentUser().value;
         },
 
         //sign out:
         async signOut() {
-            await auth.signOut();
-            this.user = null;
+            try {
+              await signOut(auth);
+              this.setUser(null);
+              useRouter().push('/'); // customize route later
+            } catch (error) {
+              this.authError = (error as AuthError).message;
+            }
+        },
+
+        // Call this method in your main entry file to initialize the user's state based on their auth state
+        initializeAuthListener() {
+            onAuthStateChanged(auth, (user) => {
+                this.setUser(user);
+            });
         },
     
     },
