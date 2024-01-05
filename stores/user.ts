@@ -74,20 +74,41 @@ export const useUserStore = defineStore('user', {
     actions: {
         //setters 
         setUser(payload: User | null) {
-        if (payload) {
             this.user = payload;
-            this.displayName = payload.displayName || '';
-            this.email = payload.email || '';
-            this.photoURL = payload.photoURL || '';
-            this.emailVerified = payload.emailVerified;
-        } else {
-            this.user = null;
-            this.displayName = '';
-            this.email = '';
-            this.photoURL = '';
-            this.emailVerified = false;
-        }
+            if (payload) {
+                this.email = payload.email || '';
+                this.emailVerified = payload.emailVerified;
+                this.loadUserProfile(); // Load additional profile details from Firestore
+            } else {
+                this.clearUserProfile();
+            }
         },
+      
+        clearUserProfile() {
+            this.displayName = '';
+            this.username = '';
+            this.photoURL = '';
+        },
+      
+        async loadUserProfile() {
+            if (this.user) {
+                const userProfileRef = doc(db, 'users', this.user.uid);
+                try {
+                const userProfileSnap = await getDoc(userProfileRef);
+                if (userProfileSnap.exists()) {
+                    const profileData = userProfileSnap.data();
+                    this.displayName = profileData.displayName || '';
+                    this.username = profileData.username || '';
+                    this.photoURL = profileData.photoURL || '';
+                } else {
+                    this.clearUserProfile();
+                    console.log('No user profile found in Firestore');
+                }
+                } catch (error) {
+                console.error('Error fetching user profile:', error);
+                }
+            }
+        },      
 
         //sign in:
         async signIn(email: any, password: any) {
@@ -103,6 +124,7 @@ export const useUserStore = defineStore('user', {
             }
             else{
                 console.log('Email not verified');
+                this.authError = 'Email not verified'; 
                 return 'Email not verified';
             }
         },
