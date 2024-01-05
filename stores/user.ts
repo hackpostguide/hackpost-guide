@@ -94,18 +94,18 @@ export const useUserStore = defineStore('user', {
             if (this.user) {
                 const userProfileRef = doc(db, 'users', this.user.uid);
                 try {
-                const userProfileSnap = await getDoc(userProfileRef);
-                if (userProfileSnap.exists()) {
-                    const profileData = userProfileSnap.data();
-                    this.displayName = profileData.displayName || '';
-                    this.username = profileData.username || '';
-                    this.photoURL = profileData.photoURL || '';
-                } else {
-                    this.clearUserProfile();
-                    console.log('No user profile found in Firestore');
-                }
+                    const userProfileSnap = await getDoc(userProfileRef);
+                    if (userProfileSnap.exists()) {
+                        const profileData = userProfileSnap.data();
+                        this.displayName = profileData.displayName || '';
+                        this.username = profileData.username || '';
+                        this.photoURL = profileData.photoURL || '';
+                    } else {
+                        this.clearUserProfile();
+                        console.log('No user profile found in Firestore');
+                    }
                 } catch (error) {
-                console.error('Error fetching user profile:', error);
+                    console.error('Error fetching user profile:', error);
                 }
             }
         },      
