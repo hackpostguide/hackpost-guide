@@ -103,11 +103,11 @@ export const useUserStore = defineStore('user', {
                     } else {
                         this.clearUserProfile();
                         this.authError = 'No user profile found in Firestore';
-                        console.log('No user profile found in Firestore');
+                        console.log(this.authError);
                     }
                 } catch (error) {
                     this.authError = 'Error fetching user profile: ' + error;
-                    console.error('Error fetching user profile:', error);
+                    console.error(this.authError);
                 }
             }
         },      
@@ -127,7 +127,7 @@ export const useUserStore = defineStore('user', {
             else{
                 console.log('Email not verified');
                 this.authError = 'Email not verified'; 
-                return 'Email not verified';
+                return this.authError;
             }
         },
 
