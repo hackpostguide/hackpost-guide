@@ -1,20 +1,16 @@
-<script>
-import { ref } from 'vue'
-import { useVueform, Vueform } from '@vueform/vueform'
-
-export default {
-  mixins: [Vueform],
-  setup(props, context)
-  {
-    const form = useVueform(props, context)
-
-    const vueform = ref({
-      size: 'md',
-      displayErrors: false,
-      steps: {
-        page0: {
-          label: 'Step 1',
-          elements: [
+<!-- using inline, composition API -->
+<template>
+  <Vueform
+    size="md"
+    :display-errors="false"
+    add-class="vf-create-account"
+  >
+    <template #empty>
+      <FormSteps>
+        <FormStep
+          name="page0"
+          label="Step 1"
+          :elements="[
             'page_title',
             'divider',
             'container',
@@ -26,185 +22,176 @@ export default {
             'marketing_emails',
             'divider_1',
             'register',
-          ],
-        },
-        page1: {
-          label: 'Step 2',
-          elements: [
+          ]"
+        />
+        <FormStep
+          name="page1"
+          label="Step 2"
+          :elements="[
             'h1',
             'p',
             'primaryButton',
             'p_copy',
             'secondaryButton',
-          ],
-        },
-        page2: {
-          label: 'Step 3',
-          elements: [
+          ]"
+        />
+        <FormStep
+          name="page2"
+          label="Step 3"
+          :elements="[
             'h1_1',
             'textarea',
-          ],
-        },
-      },
-      addClass: 'vf-create-account',
-      schema: {
-        page_title: {
-          type: 'static',
-          content: 'Create account',
-          tag: 'h1',
-        },
-        divider: {
-          type: 'static',
-          tag: 'hr',
-        },
-        container: {
-          type: 'group',
-          schema: {
-            first_name: {
-              type: 'text',
-              placeholder: 'First name',
-              columns: {
-                container: 6,
-                label: 12,
-                wrapper: 12,
-              },
-              fieldName: 'First name',
-              rules: [
-                'required',
-                'max:255',
-              ],
-            },
-            last_name: {
-              type: 'text',
-              placeholder: 'Last name',
-              columns: {
-                container: 6,
-                label: 12,
-                wrapper: 12,
-              },
-              fieldName: 'Last name',
-              rules: [
-                'required',
-                'max:255',
-              ],
-            },
-          },
-        },
-        username: {
-          type: 'text',
-          placeholder: 'Username',
-          rules: [
+          ]"
+        />
+      </FormSteps>
+
+      <FormElements>
+        <StaticElement
+          name="register_title"
+          content="Create account"
+          tag="h1"
+        />
+        <StaticElement
+          name="divider"
+          tag="hr"
+        />
+        <GroupElement
+          name="container"
+        >
+          <TextElement
+            name="first_name"
+            placeholder="First name"
+            :columns="{
+              container: 6,
+              label: 12,
+              wrapper: 12,
+            }"
+            field-name="First name"
+            :rules="[
+              'required',
+              'max:255',
+            ]"
+          />
+          <TextElement
+            name="last_name"
+            placeholder="Last name"
+            :columns="{
+              container: 6,
+              label: 12,
+              wrapper: 12,
+            }"
+            field-name="Last name"
+            :rules="[
+              'required',
+              'max:255',
+            ]"
+          />
+        </GroupElement>
+        <TextElement
+          name="username"
+          placeholder="Username"
+          :rules="[
             'required',
-          ],
-          fieldName: 'Username',
-          description: "You won't be able to change your username after you create your account",
-        },
-        email: {
-          type: 'text',
-          inputType: 'email',
-          rules: [
+          ]"
+          field-name="Phone"
+          description="You won't be able to change your username after you create your account"
+        />
+        <TextElement
+          name="email"
+          input-type="email"
+          :rules="[
             'required',
             'max:255',
             'email',
-          ],
-          placeholder: 'Email',
-          fieldName: 'Email',
-          description: 'You will receive a confirmation letter to this email.',
-        },
-        password: {
-          type: 'text',
-          inputType: 'password',
-          rules: [
+          ]"
+          placeholder="Email"
+          field-name="Email"
+          description="You will receive a confirmation letter to this email."
+        />
+        <TextElement
+          name="password"
+          input-type="password"
+          :rules="[
             'required',
             'min:8',
             'same:password_confirmation',
-          ],
-          fieldName: 'Password',
-          placeholder: 'Password',
-        },
-        password_confirmation: {
-          type: 'text',
-          inputType: 'password',
-          rules: [
+          ]"
+          field-name="Password"
+          placeholder="Password"
+        />
+        <TextElement
+          name="password_confirmation"
+          input-type="password"
+          :rules="[
             'required',
-          ],
-          fieldName: 'Password confirmation',
-          placeholder: 'Password again',
-        },
-        terms: {
-          type: 'checkbox',
-          text: 'I accept the Terms & Conditions & Privacy Policy',
-          rules: [
-            'required',
-          ],
-        },
-        marketing_emails: {
-          type: 'checkbox',
-          text: 'Add me to the mailing list',
-        },
-        divider_1: {
-          type: 'static',
-          tag: 'hr',
-        },
-        register: {
-          type: 'button',
-          submits: true,
-          buttonLabel: 'Create account',
-          full: true,
-          size: 'lg',
-        },
-        h1: {
-          type: 'static',
-          tag: 'h1',
-          content: 'Check to confirm your email',
-        },
-        p: {
-          type: 'static',
-          tag: 'p',
-          content: 'After you confirmed your email, click "I confirmed my email" to continue!',
-        },
-        primaryButton: {
-          type: 'button',
-          buttonLabel: 'I confirmed my email!',
-          submits: true,
-          align: 'center',
-          full: true,
-          // rules: [
-          //   'required',
-          // ],
-        },
-        p_copy: {
-          type: 'static',
-          tag: 'p',
-          content: 'If you didn\'t receive an email, click "resend" to resend the confirmation email.',
-        },
-        secondaryButton: {
-          type: 'button',
-          buttonLabel: 'Resend confirmation email',
-          secondary: true,
-          submits: true,
-          full: true,
-        },
-        h1_1: {
-          type: 'static',
-          tag: 'h1',
-          content: 'Onboarding',
-        },
-        textarea: {
-          type: 'textarea',
-          placeholder: '150 characters max',
-          default: '',
-        },
-      },
-    })
+          ]"
+          field-name="Password confirmation"
+          placeholder="Password again"
+        />
+        <CheckboxElement
+          name="terms"
+          text="I accept the Terms & Conditions & Privacy Policy"
+        />
+        <CheckboxElement
+          name="marketing_emails"
+          text="Add me to the mailing list"
+        />
+        <StaticElement
+          name="divider_1"
+          tag="hr"
+        />
+        <ButtonElement
+          name="register"
+          :submits="true"
+          button-label="Create account"
+          :full="true"
+          size="lg"
+        />
+        <StaticElement
+          name="h1"
+          tag="h1"
+          content="Check to confirm your email"
+        />
+        <StaticElement
+          name="p"
+          tag="p"
+          content="After you confirmed your email, click 'I confirmed my email' to continue!"
+        />
+        <ButtonElement
+          name="primaryButton"
+          button-label="I confirmed my email!"
+          :submits="true"
+          align="center"
+          :full="true"
+        />
+        <StaticElement
+          name="p_copy"
+          tag="p"
+          content="If you didn't receive an email, click 'resend' to resend the confirmation email."
+        />
+        <ButtonElement
+          name="secondaryButton"
+          button-label="Resend confirmation email"
+          :secondary="true"
+          :submits="true"
+          :full="true"
+        />
+        <StaticElement
+          name="h1_1"
+          tag="h1"
+          content="Onboarding"
+        />
+        <TextareaElement
+          name="textarea"
+          label="Optional: add your own bio!"
+          placeholder="150 characters max"
+        />
+      </FormElements>
 
-    return {
-      ...form,
-      vueform,
-    }
-  }
-}
-</script>
+      <FormStepsControls />
+    </template>
+  </Vueform>
+</template>
 
 <style>
 .vf-create-account *,
