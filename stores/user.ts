@@ -1,4 +1,6 @@
-import { defineStore } from 'pinia';
+import { defineStore } from 'pinia'
+import { getApps, initializeApp } from 'firebase/app';
+
 import {
     createUserWithEmailAndPassword,
     EmailAuthProvider,
@@ -20,14 +22,39 @@ import {
   } from 'firebase/auth'
 import { ref } from 'vue';
 import { useFirestore, useFirebaseAuth, useCollection } from 'vuefire'; 
+import { getFirestore } from 'firebase/firestore';
+import { getAuth } from 'firebase/auth';
+
 import { collection, doc, setDoc, getDoc, writeBatch } from 'firebase/firestore';
+
+//initialize firebase
+const firebaseConfig = {
+    apiKey: process.env.FIREBASE_API_KEY,
+    authDomain: process.env.FIREBASE_AUTH_DOMAIN,
+    projectId: process.env.FIREBASE_PROJECT_ID, 
+    appId: process.env.FIREBASE_APP_ID,
+    // there could be other properties depending on the project
+};
+
+// Initialize Firebase
+
+//intialize only if not already initialized:
+if (!getApps().length) {
+    initializeApp(firebaseConfig);
+}
+// const app = initializeApp(firebaseConfig);
+
 
 const db = useFirestore();
 const auth = useFirebaseAuth()!;
+// const db = getFirestore(app);
+// const auth = getAuth(app);
+
 // const route = useRoute();
-const router = useRouter();
+// const router = useRouter();
 
 // const user = ref(useCurrentUser()); // holds the current user state
+
 
 export const useUserStore = defineStore('user', {
     //using option stores
@@ -119,7 +146,7 @@ export const useUserStore = defineStore('user', {
                     const { user } = await signInWithEmailAndPassword(auth, email, password);
                     this.setUser(user);
                     this.authError = null;
-                    useRouter().push('/'); // customize route later
+                    // useRouter().push('/'); // customize route later
                 } catch (error) {
                     this.authError = (error as AuthError).message;
                 }
@@ -136,7 +163,7 @@ export const useUserStore = defineStore('user', {
             try {
               await signOut(auth);
               this.setUser(null);
-              useRouter().push('/'); // customize route later
+            //   useRouter().push('/'); // customize route later
             } catch (error) {
               this.authError = (error as AuthError).message;
             }
@@ -152,6 +179,7 @@ export const useUserStore = defineStore('user', {
     },
 
     /*
+
 
     // Reactive references
     const user = ref(useCurrentUser()); // holds the current user state

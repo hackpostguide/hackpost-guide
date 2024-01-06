@@ -1,5 +1,8 @@
 <template>
     <div class="grid grid-cols-12">
+        <p>
+            
+        </p>
         <div class="col-start-2 col-end-12">
             <UserCreateAccount />
         </div>

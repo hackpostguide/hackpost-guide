@@ -4,6 +4,8 @@
     size="md"
     :display-errors="false"
     add-class="vf-create-account"
+    ref="form$"
+    v-model="data"
   >
     <template #empty>
       <FormSteps>
@@ -192,6 +194,30 @@
     </template>
   </Vueform>
 </template>
+
+<script lang="ts">
+import { ref, onMounted } from 'vue'
+
+export default {
+  setup() {
+    const form$ = ref<any>(null) // Initialize form$ with the 'any' type
+
+    onMounted(() => {
+      console.log(form$.value?.data)
+    })
+
+    return {
+      form$,
+    }
+  },
+
+  data() { //return data
+    return {
+      data: {}
+    }
+  }
+}
+</script>
 
 <style>
 .vf-create-account *,
