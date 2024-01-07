@@ -13,14 +13,14 @@
       <!-- Need to fix: turn into a toggle menu for mobile screens  -->
       <div class="col-start-6 col-end-11 flex items-center justify-end mobileoff">
         <ul class="flex gap-9">
-          <li><AppButton @click="getDisplayName()" buttonStyle="transparent">Modules</AppButton></li>
+          <!-- <li><AppButton @click="getDisplayName()" buttonStyle="transparent">Modules</AppButton></li> -->
           <!-- Display user's name if signed in -->
           <li><AppButton to="/about" buttonStyle="transparent">About</AppButton></li>
-          <li><AppButton to="/signup" buttonStyle="transparent">{{ isUserSignedIn() ? displayName : 'Sign In' }}</AppButton></li>
+          <!-- <li><AppButton to="/signup" buttonStyle="transparent">{{ isUserSignedIn() ? displayName : 'Sign In' }}</AppButton></li> -->
           <!-- Display "Sign Out" if user is signed in, else "Sign In" -->
           <li>
-            <AppButton v-if="isUserSignedIn()" @click="logOut()" class="btn">Sign Out</AppButton>
-            <AppButton v-else to="/signup" class="btn">Sign Up</AppButton>
+            <!-- <AppButton v-if="isUserSignedIn()" @click="logOut()" class="btn">Sign Out</AppButton> -->
+            <!-- <AppButton v-else to="/signup" class="btn">Sign Up</AppButton> -->
           </li>
         </ul>
       </div>
@@ -38,9 +38,10 @@
 </template>
 
 <script setup lang="ts" async>
-    import {
-      signOut,
-    } from 'firebase/auth';
+    
+    // import {
+    //   signOut,
+    // } from 'firebase/auth';
 
     import { ref } from 'vue';
 
@@ -53,20 +54,20 @@
     const auth = useFirebaseAuth();
 
     //probably could simplify this...
-    const userStore = useUserStore();
-    let data = userStore.getData();
+    // const userStore = useUserStore();
+    // let displayName = userStore.displayName();
     // const displayName = data.displayName;
     function getDisplayName() {
-      data = userStore.getData();
-      data.then((resolvedData) => {
-        console.log(resolvedData?.displayName);
-        displayName.value = resolvedData?.displayName || 'Not Logged In'; // Set the display name or a default
-        // return resolvedData?.displayName;
-      });
+      // data = userStore.getData();
+      // data.then((resolvedData) => {
+      //   console.log(resolvedData?.displayName);
+      //   displayName.value = resolvedData?.displayName || 'Not Logged In'; // Set the display name or a default
+      //   // return resolvedData?.displayName;
+      // });
     } 
 
 
-    useColorMode().preference = 'light'; 
+    // useColorMode().preference = 'dark'; 
     type Theme = 'light' | 'dark';
 
     //check if user is signed in
@@ -74,14 +75,15 @@
       return useCurrentUser().value != null;
     }
 
-    function logOut() {
-      if (auth) {
-        signOut(auth);
-      }
-      console.log('User signed out');
-      // console.log(useCurrentUser().value);
-      // console.log(data);
-    }
+    // function logOut() {
+    //   if (auth) {
+    //     signOut(auth);
+    //   }
+    //   console.log('User signed out');
+    //   // console.log(useCurrentUser().value);
+    //   // console.log(data);
+    // }
+
 
     // const setColorTheme = (newTheme: Theme) => {
     // useColorMode().preference = newTheme;

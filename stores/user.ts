@@ -27,21 +27,21 @@ import { getAuth } from 'firebase/auth';
 
 import { collection, doc, setDoc, getDoc, writeBatch } from 'firebase/firestore';
 
-//initialize firebase
-const firebaseConfig = {
-    apiKey: process.env.FIREBASE_API_KEY,
-    authDomain: process.env.FIREBASE_AUTH_DOMAIN,
-    projectId: process.env.FIREBASE_PROJECT_ID, 
-    appId: process.env.FIREBASE_APP_ID,
-    // there could be other properties depending on the project
-};
+// //initialize firebase
+// const firebaseConfig = {
+//     apiKey: process.env.FIREBASE_API_KEY,
+//     authDomain: process.env.FIREBASE_AUTH_DOMAIN,
+//     projectId: process.env.FIREBASE_PROJECT_ID, 
+//     appId: process.env.FIREBASE_APP_ID,
+//     // there could be other properties depending on the project
+// };
 
-// Initialize Firebase
+// // Initialize Firebase
 
-//intialize only if not already initialized:
-if (!getApps().length) {
-    initializeApp(firebaseConfig);
-}
+// //intialize only if not already initialized:
+// if (!getApps().length) {
+//     initializeApp(firebaseConfig);
+// }
 // const app = initializeApp(firebaseConfig);
 
 
@@ -50,8 +50,8 @@ const auth = useFirebaseAuth()!;
 // const db = getFirestore(app);
 // const auth = getAuth(app);
 
-// const route = useRoute();
-// const router = useRouter();
+const route = useRoute();
+const router = useRouter();
 
 // const user = ref(useCurrentUser()); // holds the current user state
 
