@@ -203,7 +203,7 @@ export default {
     const form$ = ref<any>(null) // Initialize form$ with the 'any' type
 
     onMounted(() => {
-      console.log(form$.value?.data)
+      // console.log(form$.value?.data)
     })
 
     return {

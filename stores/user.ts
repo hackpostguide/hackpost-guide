@@ -45,13 +45,13 @@ import { collection, doc, setDoc, getDoc, writeBatch } from 'firebase/firestore'
 // const app = initializeApp(firebaseConfig);
 
 
-const db = useFirestore();
-const auth = useFirebaseAuth()!;
+// const db = useFirestore();
+// const auth = useFirebaseAuth()!;
 // const db = getFirestore(app);
 // const auth = getAuth(app);
 
-const route = useRoute();
-const router = useRouter();
+// const route = useRoute();
+// const router = useRouter();
 
 // const user = ref(useCurrentUser()); // holds the current user state
 
@@ -82,6 +82,7 @@ export const useUserStore = defineStore('user', {
             return state.user;
         },
         getDisplayName(state) {
+            console.log("display name: ", state.displayName)
             return state.displayName;
         },
         getUsername(state) {
@@ -100,6 +101,7 @@ export const useUserStore = defineStore('user', {
     },
     actions: {
         //setters 
+        /*
         setUser(payload: User | null) {
             this.user = payload;
             if (payload) {
@@ -117,6 +119,7 @@ export const useUserStore = defineStore('user', {
             this.photoURL = '';
         },
       
+        
         async loadUserProfile() {
             if (this.user) {
                 const userProfileRef = doc(db, 'users', this.user.uid);
@@ -174,7 +177,7 @@ export const useUserStore = defineStore('user', {
             onAuthStateChanged(auth, (user) => {
                 this.setUser(user);
             });
-        },
+        },*/
     
     },
 
