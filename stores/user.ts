@@ -35,91 +35,201 @@ import { collection, doc, setDoc, getDoc, writeBatch } from 'firebase/firestore'
 //     appId: process.env.FIREBASE_APP_ID,
 //     // there could be other properties depending on the project
 // };
-
 // // Initialize Firebase
-
 // //intialize only if not already initialized:
 // if (!getApps().length) {
 //     initializeApp(firebaseConfig);
 // }
-// const app = initializeApp(firebaseConfig);
+
+export const useUserStore = defineStore('user', () => {
+    // Reactive references
+    const db = useFirestore();
+    const auth = useFirebaseAuth()!;
+    const user = useCurrentUser(); // holds the current user state
+
+    // const usersRef = useCollection(collection(db, 'users'));
+
+    const route = useRoute();
+    const router = useRouter();
+
+    // Auth methods
+    const signIn = async (email: any, password: any) => {
+        try {
+            signInWithEmailAndPassword(auth, email.value, password.value);
+            router.push('/'); // Redirect the user to a confirmed page
+        } catch (error) {
+            console.error('Login failed:', error);
+        }
+    };
+
+    const signOut = async () => {
+        await auth.signOut();
+        user.value = null;
+    };
+
+    async function getData() {
+        if (user.value) {
+            console.log('user uid: ', user.value.uid);
+            const docRef = doc(db, 'users', user.value.uid);
+            const docSnap = await getDoc(docRef);
+            if (docSnap.exists()) {
+                console.log('Document data:', docSnap.data());
+                return docSnap.data();
+            } else {
+                // doc.data() will be undefined in this case
+                console.log('No user found');
+            }
+        }
+        else{
+            console.log('No user found');
+            return null;
+        }
+    }
+    
 
 
-// const db = useFirestore();
-// const auth = useFirebaseAuth()!;
-// const db = getFirestore(app);
-// const auth = getAuth(app);
+    return { 
+        user, // the current user
+        signIn, // method to sign in
+        signOut, // method to sign out
+        getData,
+    }
+});
 
-// const route = useRoute();
-// const router = useRouter();
+
+/*
+
+const db = useFirestore();
+const auth = useFirebaseAuth()!;
+
+const route = useRoute();
+const router = useRouter();
 
 // const user = ref(useCurrentUser()); // holds the current user state
 
+export const useUserStore = defineStore('user', () => {
+    //using setup stores
 
-export const useUserStore = defineStore('user', {
-    //using option stores
+    // State
+    const user = ref<User | null>(null);
+    const displayName = ref('');
+    const username = ref('');
+    const email = ref('');
+    const photoURL = ref('');
+    const emailVerified = ref(false);
+    const authError = ref<string | null>(null);
+
+    // Getters
+    const isAuthenticated = computed(() => user.value !== null && emailVerified.value);
+
+   
+        //setters 
+    const setUser = (payload: User | null) => {
+        user.value = payload;
+        // if (payload) {
+        //     user.email = payload.email || '';
+        //     user.emailVerified = payload.emailVerified;
+        //     this.loadUserProfile(); // Load additional profile details from Firestore
+        // } else {
+        //     this.clearUserProfile();
+        // }
+    };
+      
+    // function clearUserProfile() {
+    //     this.displayName = '';
+    //     this.username = '';
+    //     this.photoURL = '';
+    // };
+
+    
 
     /*
-    const db = useFirestore();
-    const auth = useFirebaseAuth()!;
-    // const route = useRoute();
-    const router = useRouter();*/
+    async signIn(email: any, password: any) {
+        if(this.emailVerified){
+            try {
+                const { user } = await signInWithEmailAndPassword(auth, email, password);
+                this.setUser(user);
+                this.authError = null;
+                // useRouter().push('/'); // customize route later
+            } catch (error) {
+                this.authError = (error as AuthError).message;
+            }
+        }
+        else{
+            console.log('Email not verified');
+            this.authError = 'Email not verified'; 
+            return this.authError;
+        }
+    },
+    
+    const signIn = async (email: any, password: any) => {
+        try {
+            signInWithEmailAndPassword(auth, email.value, password.value);
+            router.push('/'); // Redirect the user to a confirmed page
+        } catch (error) {
+            console.error('Login failed:', error);
+        }
+    };
 
-    state: () => {
-        return {
-            user: null as User | null,
-            displayName: '',
-            username: '',
-            email: '',
-            photoURL: '',
-            emailVerified: false,
-            authError: '' as string | null,
-        };
-    },
-    getters: {
-        //getters:
-        getUser(state) {
-            return state.user;
-        },
-        getDisplayName(state) {
-            console.log("display name: ", state.displayName)
-            return state.displayName;
-        },
-        getUsername(state) {
-            return state.username;
-        },
-        getEmail(state) {
-            return state.email;
-        },
-        getPhotoURL(state) {
-            return state.photoURL;
-        },
-        getEmailVerified(state) {
-            return state.emailVerified;
-        },
-        isAuthenticated: (state) => state.user !== null && state.emailVerified,
-    },
-    actions: {
-        //setters 
-        /*
-        setUser(payload: User | null) {
-            this.user = payload;
-            if (payload) {
-                this.email = payload.email || '';
-                this.emailVerified = payload.emailVerified;
-                this.loadUserProfile(); // Load additional profile details from Firestore
-            } else {
-                this.clearUserProfile();
+
+    /**
+     * async signOut() {
+            try {
+              await signOut(auth);
+              this.setUser(null);
+            //   useRouter().push('/'); // customize route later
+            } catch (error) {
+              this.authError = (error as AuthError).message;
             }
         },
-      
-        clearUserProfile() {
-            this.displayName = '';
-            this.username = '';
-            this.photoURL = '';
-        },
-      
-        
+     
+    const signOut = async () => {
+        await auth.signOut();
+        user.value = null;
+    };
+
+    /*initializeAuthListener() {
+        onAuthStateChanged(auth, (user) => {
+            this.setUser(user);
+        });
+    },
+
+    async function getData() {
+        if (user.value) {
+            console.log('user uid: ', user.value.uid);
+            const docRef = doc(db, 'users', user.value.uid);
+            const docSnap = await getDoc(docRef);
+            if (docSnap.exists()) {
+                console.log('Document data:', docSnap.data());
+                return docSnap.data();
+            } else {
+                // doc.data() will be undefined in this case
+                console.log('No user found');
+            }
+        }
+        else{
+            console.log('No user found');
+            return null;
+        }
+    }
+    return {
+        user,
+        displayName,
+        username,
+        email,
+        photoURL,
+        emailVerified,
+        authError,
+        isAuthenticated,
+        setUser,
+        signIn,
+        getData,
+        // signOutUser,
+        // ...rest of your returned properties and methods
+    };
+});
+
+    /*
         async loadUserProfile() {
             if (this.user) {
                 const userProfileRef = doc(db, 'users', this.user.uid);
@@ -179,7 +289,6 @@ export const useUserStore = defineStore('user', {
             });
         },*/
     
-    },
 
     /*
 
@@ -238,5 +347,3 @@ export const useUserStore = defineStore('user', {
         signOut, // method to sign out
         getData,
     }*/
-    
-});

@@ -16,11 +16,11 @@
           <li><AppButton @click="getDisplayName()" buttonStyle="transparent">Modules</AppButton></li>
           <!-- Display user's name if signed in -->
           <li><AppButton to="/about" buttonStyle="transparent">About</AppButton></li>
-          <li><AppButton to="/signup" buttonStyle="transparent">{{ isUserSignedIn() ? displayName : 'Sign In' }}</AppButton></li>
+          <li><AppButton to="/signup1" buttonStyle="transparent">{{ isUserSignedIn() ? displayName : 'Sign In' }}</AppButton></li>
           <!-- Display "Sign Out" if user is signed in, else "Sign In" -->
           <li>
             <AppButton v-if="isUserSignedIn()" @click="logOut()" class="btn">Sign Out</AppButton>
-            <AppButton v-else to="/signup" class="btn">Sign Up</AppButton>
+            <AppButton v-else to="/signup1" class="btn">Sign Up</AppButton>
           </li>
         </ul>
       </div>
@@ -55,17 +55,15 @@
 
     //probably could simplify this...
     const userStore = useUserStore();
-    // let displayName = userStore.displayName();
+    let data = userStore.getData();
     // const displayName = data.displayName;
     function getDisplayName() {
-      displayName.value = userStore.getDisplayName;
-      console.log("display name: " + displayName.value);
-      // data = userStore.getData();
-      // data.then((resolvedData) => {
-      //   console.log(resolvedData?.displayName);
-      //   displayName.value = resolvedData?.displayName || 'Not Logged In'; // Set the display name or a default
-      //   // return resolvedData?.displayName;
-      // });
+      data = userStore.getData();
+      data.then((resolvedData) => {
+        console.log(resolvedData?.displayName);
+        displayName.value = resolvedData?.displayName || 'Not Logged In'; // Set the display name or a default
+        // return resolvedData?.displayName;
+      });
     } 
 
 

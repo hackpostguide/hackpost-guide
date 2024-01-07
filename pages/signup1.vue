@@ -167,7 +167,7 @@ function saveUserInfo(user: { reload?: any; emailVerified?: any; uid: any; email
   <div class="flex flex-col items-center justify-center min-h-screen">
     <h1 class="Heading2">Sign Up</h1>
 
-    <!-- <form @submit.prevent="signUp()">
+  <form @submit.prevent="signUp()">
       <fieldset>
         <div class="py-5">
           <label for="firstName" class="bodyText">First Name: </label>
@@ -214,7 +214,7 @@ function saveUserInfo(user: { reload?: any; emailVerified?: any; uid: any; email
     </form>
 
 
-    <button class="btn" @click="signOut(auth)">Sign Out</button> -->
+    <button class="btn" @click="signOut(auth)">Sign Out</button>
 
     <!-- for debugging purposes only -->
     <ClientOnly>
