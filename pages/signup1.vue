@@ -25,6 +25,11 @@ import {
 // import { useCollection, useDocument } from 'vuefire';
 import { collection, doc, setDoc, getDoc, writeBatch } from 'firebase/firestore';
 
+import { useUserStore } from '~/stores/user';
+
+const userStore = useUserStore();
+
+
 const db = useFirestore();
 const auth = useFirebaseAuth()!;
 const user = useCurrentUser();
@@ -104,6 +109,10 @@ async function signUp() {
 }
 
 async function signIn(){
+  //pinia store signIn:
+  //TODO: does not work
+  // userStore.signIn(email.value, password.value);
+
   if (auth.currentUser) {
     await checkEmailVerification(auth.currentUser);
   }

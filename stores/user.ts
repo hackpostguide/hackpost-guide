@@ -45,27 +45,78 @@ export const useUserStore = defineStore('user', () => {
     // Reactive references
     const db = useFirestore();
     const auth = useFirebaseAuth()!;
-    const user = useCurrentUser(); // holds the current user state
-
-    // const usersRef = useCollection(collection(db, 'users'));
-
+    // const usersRef = useCollection(collection(db, 'users'));   
     const route = useRoute();
-    const router = useRouter();
+    const router = useRouter(); 
 
-    // Auth methods
+    // Getters
+    const isAuthenticated = computed(() => user.value !== null && emailVerified.value);
+
+
+    // State
+    // const user = ref<User | null>(null);
+    const user = ref(useCurrentUser()); 
+    const displayName = ref('');
+    const username = ref('');
+    const email = ref('');
+    const photoURL = ref('');
+    const emailVerified = ref(false);
+    const authError = ref<string | null>(null);
+
+    //setters 
+    const setUser = (payload: User | null) => {
+        user.value = payload;
+        // if (payload) {
+        //     user.email = payload.email || '';
+        //     user.emailVerified = payload.emailVerified;
+        //     this.loadUserProfile(); // Load additional profile details from Firestore
+        // } else {
+        //     this.clearUserProfile();
+        // }
+    };
+      
+    // function clearUserProfile() {
+    //     this.displayName = '';
+    //     this.username = '';
+    //     this.photoURL = '';
+    // };
+
+    
     const signIn = async (email: any, password: any) => {
-        try {
-            signInWithEmailAndPassword(auth, email.value, password.value);
-            router.push('/'); // Redirect the user to a confirmed page
-        } catch (error) {
-            console.error('Login failed:', error);
+        if (isAuthenticated) {
+            try {
+                const { user } = await signInWithEmailAndPassword(auth, email.value, password.value);
+                setUser(user);
+                router.push('/'); // Redirect the user to a confirmed page
+            } catch (error) {
+                // authError = (error as AuthError).message;
+                console.error('Login failed:', error);
+            }
+        }
+        else{
+            console.log('Email not verified');
+            // this.authError = 'Email not verified'; 
+            // return this.authError;
         }
     };
 
+     
     const signOut = async () => {
-        await auth.signOut();
-        user.value = null;
+        try{
+            await auth.signOut();
+            user.value = null;
+        }
+        catch(error){
+            console.log('Error signing out: ', error);
+        }
     };
+
+    function initializeAuthListener() {
+        onAuthStateChanged(auth, (user) => {
+            setUser(user);
+        });
+    };
+    
 
     async function getData() {
         if (user.value) {
@@ -109,6 +160,12 @@ const router = useRouter();
 
 export const useUserStore = defineStore('user', () => {
     //using setup stores
+
+    const db = useFirestore();
+    const auth = useFirebaseAuth()!;
+
+    const route = useRoute();
+    const router = useRouter();
 
     // State
     const user = ref<User | null>(null);
