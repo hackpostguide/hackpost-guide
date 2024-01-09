@@ -60,7 +60,7 @@ export const useUserStore = defineStore('user', () => {
     const username = ref('');
     const email = ref('');
     const photoURL = ref('');
-    const emailVerified = ref(false);
+    const emailVerified = ref(true);
     const authError = ref<string | null>(null);
 
     //setters 
@@ -82,11 +82,19 @@ export const useUserStore = defineStore('user', () => {
     // };
 
     
-    const signIn = async (email: any, password: any) => {
+    const signIn = async (email: any, password: any) => { //works as of 1/9/24
+        // console.log(email, password);
+        //authenticate email:
+        // if (auth.currentUser) {
+        //     await checkEmailVerification(auth.currentUser); //implement checkEmailVerification function later
+        // }
+
         if (isAuthenticated) {
             try {
-                const { user } = await signInWithEmailAndPassword(auth, email.value, password.value);
+                // console.log("is authenticated");
+                const { user } = await signInWithEmailAndPassword(auth, email, password);
                 setUser(user);
+                // console.log("signed in through pinia store!")
                 router.push('/'); // Redirect the user to a confirmed page
             } catch (error) {
                 // authError = (error as AuthError).message;
@@ -132,7 +140,7 @@ export const useUserStore = defineStore('user', () => {
             }
         }
         else{
-            console.log('No user found');
+            console.log('did not find user');
             return null;
         }
     }

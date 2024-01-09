@@ -206,7 +206,7 @@ function saveUserInfo(user: { reload?: any; emailVerified?: any; uid: any; email
 
 
     <h1 class="Heading2">Sign In</h1>
-    <form @submit.prevent="signIn()">
+    <form @submit.prevent="userStore.signIn(email, password)">
       <fieldset>
 
         <div class="py-5">
