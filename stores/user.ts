@@ -76,20 +76,20 @@ export const useUserStore = defineStore('user', () => {
     //setters 
     const setUser = (payload: User | null) => {
         user.value = payload;
-        // if (payload) {
-        //     user.email = payload.email || '';
-        //     user.emailVerified = payload.emailVerified;
-        //     this.loadUserProfile(); // Load additional profile details from Firestore
-        // } else {
-        //     this.clearUserProfile();
-        // }
+        if (payload) {
+            email.value = payload.email || '';
+            emailVerified.value = payload.emailVerified;
+            // loadUserProfile(); // Load additional profile details from Firestore
+        } else {
+            clearUserProfile();
+        }
     };
       
-    // function clearUserProfile() {
-    //     this.displayName = '';
-    //     this.username = '';
-    //     this.photoURL = '';
-    // };
+    function clearUserProfile() {
+        displayName.value = '';
+        username.value = '';
+        photoURL.value = '';
+    };
 
     
     const signIn = async (email: any, password: any) => { //works as of 1/9/24
@@ -158,9 +158,20 @@ export const useUserStore = defineStore('user', () => {
 
 
     return { 
-        user, // the current user
-        signIn, // method to sign in
-        signOut, // method to sign out
+        //states
+        user, 
+        displayName,
+        username,
+        email,
+        photoURL,
+        emailVerified,
+        authError,
+        //functions
+        $reset,
+        setUser,
+        clearUserProfile,
+        signIn,
+        signOut,
         getData,
     }
 });
