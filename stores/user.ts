@@ -63,6 +63,16 @@ export const useUserStore = defineStore('user', () => {
     const emailVerified = ref(true);
     const authError = ref<string | null>(null);
 
+    function $reset() {
+        user.value = null;
+        displayName.value = '';
+        username.value = '';
+        email.value = '';
+        photoURL.value = '';
+        emailVerified.value = false;
+        authError.value = null;
+    }
+
     //setters 
     const setUser = (payload: User | null) => {
         user.value = payload;
