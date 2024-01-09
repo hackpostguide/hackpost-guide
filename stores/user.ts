@@ -113,6 +113,8 @@ export const useUserStore = defineStore('user', () => {
                 setUser(user);
                 // console.log("signed in through pinia store!")
                 router.push('/'); // Redirect the user to a confirmed page
+                // getData(); //doesn't work
+                toString();
             } catch (error) {
                 // authError = (error as AuthError).message;
                 console.error('Login failed:', error);

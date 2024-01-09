@@ -54,6 +54,7 @@
     const auth = useFirebaseAuth();
 
     //probably could simplify this...
+    //TODO: use $subscribe((mutation, state) => { to watch for changes in the store and update the display name
     const userStore = useUserStore();
     let data = userStore.getData();
     // const displayName = data.displayName;
