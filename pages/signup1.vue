@@ -223,7 +223,7 @@ function saveUserInfo(user: { reload?: any; emailVerified?: any; uid: any; email
     </form>
 
 
-    <button class="btn" @click="signOut(auth)">Sign Out</button>
+    <button class="btn" @click="userStore.signOut()">Sign Out</button>
 
     <!-- for debugging purposes only -->
     <ClientOnly>

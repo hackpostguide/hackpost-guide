@@ -64,6 +64,7 @@ export const useUserStore = defineStore('user', () => {
     const authError = ref<string | null>(null);
 
     function $reset() {
+        console.log('resetting user store');
         user.value = null;
         displayName.value = '';
         username.value = '';
@@ -71,6 +72,12 @@ export const useUserStore = defineStore('user', () => {
         photoURL.value = '';
         emailVerified.value = false;
         authError.value = null;
+        toString();
+    }
+
+    function toString(){ 
+        //print all states to the console
+        console.log('user store states: ', "user: ", user.value, "displayName: ", displayName.value, "username: ", username.value, "email: ", email.value, "photoURL: ", photoURL.value, "emailVerified: ", emailVerified.value, "authError: ", authError.value);
     }
 
     //setters 
@@ -122,7 +129,9 @@ export const useUserStore = defineStore('user', () => {
     const signOut = async () => {
         try{
             await auth.signOut();
-            user.value = null;
+            // user.value = null;
+            $reset();
+            console.log('signed out from pinia store');
         }
         catch(error){
             console.log('Error signing out: ', error);
@@ -168,6 +177,7 @@ export const useUserStore = defineStore('user', () => {
         authError,
         //functions
         $reset,
+        toString,
         setUser,
         clearUserProfile,
         signIn,
