@@ -86,9 +86,11 @@ export const useUserStore = defineStore('user', () => {
     const setUser = async (payload: User | null) => {
         user.value = payload;
         if (payload) {
+            await loadUserProfile(); // Load additional profile details from Firestore
             email.value = payload.email || '';
             emailVerified.value = payload.emailVerified;
-            await loadUserProfile(); // Load additional profile details from Firestore
+            console.log('loaded user profile');
+            toString();
         } else {
             $reset();
         }
@@ -112,7 +114,7 @@ export const useUserStore = defineStore('user', () => {
             try {
                 // console.log("is authenticated");
                 const { user } = await signInWithEmailAndPassword(auth, email, password);
-                setUser(user);
+                await setUser(user);
                 console.log("signed in through pinia store!")
                 router.push('/'); // Redirect the user to a confirmed page
                 // getData(); //doesn't work
