@@ -13,7 +13,7 @@
       <!-- Need to fix: turn into a toggle menu for mobile screens  -->
       <div class="col-start-6 col-end-11 flex items-center justify-end mobileoff">
         <ul class="flex gap-9">
-          <li><AppButton buttonStyle="transparent">Modules</AppButton></li>
+          <li><AppButton @click="getDisplayName()" buttonStyle="transparent">Modules</AppButton></li>
           <!-- Display user's name if signed in -->
           <li><AppButton to="/about" buttonStyle="transparent">About</AppButton></li>
           <li><AppButton to="/signup1" buttonStyle="transparent">{{ isUserSignedIn() ? displayName : 'Sign In' }}</AppButton></li>
