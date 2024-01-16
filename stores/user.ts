@@ -56,6 +56,7 @@ export const useUserStore = defineStore('user', () => {
     // State
     // const user = ref<User | null>(null);
     const user = ref(useCurrentUser()); 
+    const userID = ref('');
     const displayName = ref('');
     const username = ref('');
     const email = ref('');
@@ -66,6 +67,7 @@ export const useUserStore = defineStore('user', () => {
     function $reset() {
         console.log('resetting user store');
         user.value = null;
+        userID.value = '';
         displayName.value = '';
         username.value = '';
         email.value = '';
@@ -145,8 +147,34 @@ export const useUserStore = defineStore('user', () => {
             setUser(user);
         });
     };
-    
 
+
+    async function loadUserProfile() {
+        if (user.value) {
+            console.log('user uid: ', user.value.uid);
+            const userProfileRef = doc(db, 'users', user.value.uid);
+            try {
+                const userProfileSnap = await getDoc(userProfileRef);
+                if (userProfileSnap.exists()) {
+                    console.log('user profile found');
+                    console.log('Document data:', userProfileSnap.data());
+                    const profileData = userProfileSnap.data();
+                    displayName.value = profileData.displayName || '';
+                    username.value = profileData.username || '';
+                    // photoURL.value = profileData.photoURL || '';
+                } else {
+                    // clearUserProfile();
+                    $reset();
+                    authError.value = 'No user profile found in Firestore';
+                    console.log(authError.value);
+                }
+            } catch (error) {
+                authError.value = 'Error fetching user profile: ' + error;
+                console.error(authError.value);
+            }
+        }
+    }; 
+    
     async function getData() {
         if (user.value) {
             console.log('user uid: ', user.value.uid);
@@ -184,7 +212,8 @@ export const useUserStore = defineStore('user', () => {
         clearUserProfile,
         signIn,
         signOut,
-        getData,
+        loadUserProfile,
+        // getData,
     }
 });
 

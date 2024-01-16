@@ -45,26 +45,34 @@
 
     import { ref } from 'vue';
 
-    // Reactive property for the display name
-    const displayName = ref('');
     
     import { useFirebaseAuth, } from 'vuefire';
+    //use pinia user store
     import { useUserStore } from '~/stores/user';
+    const userStore = useUserStore();
+
+    // Reactive property for the display name
+    const displayName = ref(userStore.displayName);
 
     const auth = useFirebaseAuth();
 
     //probably could simplify this...
     //TODO: use $subscribe((mutation, state) => { to watch for changes in the store and update the display name
-    const userStore = useUserStore();
-    let data = userStore.getData();
+    // let data = userStore.getData();
     // const displayName = data.displayName;
     function getDisplayName() {
-      data = userStore.getData();
-      data.then((resolvedData) => {
-        console.log(resolvedData?.displayName);
-        displayName.value = resolvedData?.displayName || 'Not Logged In'; // Set the display name or a default
-        // return resolvedData?.displayName;
-      });
+      userStore.loadUserProfile();
+      console.log("display name: ", userStore.displayName);
+      displayName.value = userStore.displayName;
+      userStore.toString();
+      // data = userStore.getData();
+      // data.then((resolvedData) => {
+      //   // console.log(resolvedData?.displayName);
+      //   console.log("display name: ", userStore.displayName);
+      //   displayName.value = userStore.displayName;
+      //   // displayName.value = resolvedData?.displayName || 'Not Logged In'; // Set the display name or a default
+      //   // return resolvedData?.displayName;
+      // });
     } 
 
 

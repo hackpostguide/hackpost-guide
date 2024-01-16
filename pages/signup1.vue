@@ -25,8 +25,9 @@ import {
 // import { useCollection, useDocument } from 'vuefire';
 import { collection, doc, setDoc, getDoc, writeBatch } from 'firebase/firestore';
 
-import { useUserStore } from '~/stores/user';
 
+//use pinia user store
+import { useUserStore } from '~/stores/user';
 const userStore = useUserStore();
 
 
