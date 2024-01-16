@@ -209,7 +209,7 @@ export const useUserStore = defineStore('user', () => {
         $reset,
         toString,
         setUser,
-        clearUserProfile,
+        // clearUserProfile,
         signIn,
         signOut,
         loadUserProfile,
