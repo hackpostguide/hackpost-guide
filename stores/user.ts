@@ -83,14 +83,14 @@ export const useUserStore = defineStore('user', () => {
     }
 
     //setters 
-    const setUser = (payload: User | null) => {
+    const setUser = async (payload: User | null) => {
         user.value = payload;
         if (payload) {
             email.value = payload.email || '';
             emailVerified.value = payload.emailVerified;
-            // loadUserProfile(); // Load additional profile details from Firestore
+            await loadUserProfile(); // Load additional profile details from Firestore
         } else {
-            clearUserProfile();
+            $reset();
         }
     };
       

@@ -80,7 +80,7 @@
     } 
 
     onMounted(async () => {
-      await getDisplayName();
+      // await getDisplayName();
     });
 
 
