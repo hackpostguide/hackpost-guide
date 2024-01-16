@@ -39,14 +39,14 @@
 
 <script setup lang="ts" async>
     
-    import {
-      signOut,
-    } from 'firebase/auth';
+    // import {
+    //   signOut,
+    // } from 'firebase/auth';
 
     import { ref, onMounted, computed } from 'vue';
 
     
-    import { useFirebaseAuth, } from 'vuefire';
+    // import { useFirebaseAuth, } from 'vuefire';
     //use pinia user store
     import { useUserStore } from '~/stores/user';
     const userStore = useUserStore();
@@ -54,7 +54,7 @@
     // display name will update whenever the user store is updated
     const displayName = computed(() => userStore.displayName);
 
-    const auth = useFirebaseAuth();
+    // const auth = useFirebaseAuth();
 
     //probably could simplify this...
     //TODO: use $subscribe((mutation, state) => { to watch for changes in the store and update the display name
@@ -79,9 +79,9 @@
       // });
     } 
 
-    onMounted(async () => {
-      // await getDisplayName();
-    });
+    // onMounted(async () => {
+    //   // await getDisplayName();
+    // });
 
 
     useColorMode().preference = 'dark'; 
@@ -92,14 +92,14 @@
       return useCurrentUser().value != null;
     }
 
-    function logOut() {
-      if (auth) {
-        signOut(auth);
-      }
-      console.log('User signed out');
-      // console.log(useCurrentUser().value);
-      // console.log(data);
-    }
+    // function logOut() {
+    //   if (auth) {
+    //     signOut(auth);
+    //   }
+    //   console.log('User signed out');
+    //   // console.log(useCurrentUser().value);
+    //   // console.log(data);
+    // }
 
 
     // const setColorTheme = (newTheme: Theme) => {

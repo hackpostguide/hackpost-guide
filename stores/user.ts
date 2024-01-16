@@ -27,19 +27,6 @@ import { getAuth } from 'firebase/auth';
 
 import { collection, doc, setDoc, getDoc, writeBatch } from 'firebase/firestore';
 
-// //initialize firebase
-// const firebaseConfig = {
-//     apiKey: process.env.FIREBASE_API_KEY,
-//     authDomain: process.env.FIREBASE_AUTH_DOMAIN,
-//     projectId: process.env.FIREBASE_PROJECT_ID, 
-//     appId: process.env.FIREBASE_APP_ID,
-//     // there could be other properties depending on the project
-// };
-// // Initialize Firebase
-// //intialize only if not already initialized:
-// if (!getApps().length) {
-//     initializeApp(firebaseConfig);
-// }
 
 export const useUserStore = defineStore('user', () => {
     // Reactive references
