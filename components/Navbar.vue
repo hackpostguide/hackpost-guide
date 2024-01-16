@@ -19,7 +19,7 @@
           <li><AppButton to="/signup1" buttonStyle="transparent">{{ isUserSignedIn() ? displayName : 'Sign In' }}</AppButton></li>
           <!-- Display "Sign Out" if user is signed in, else "Sign In" -->
           <li>
-            <AppButton v-if="isUserSignedIn()" @click="logOut()" class="btn">Sign Out</AppButton>
+            <AppButton v-if="isUserSignedIn()" @click="userStore.signOut()" class="btn">Sign Out</AppButton>
             <AppButton v-else to="/signup1" class="btn">Sign Up</AppButton>
           </li>
         </ul>
@@ -43,7 +43,7 @@
       signOut,
     } from 'firebase/auth';
 
-    import { ref } from 'vue';
+    import { ref, onMounted } from 'vue';
 
     
     import { useFirebaseAuth, } from 'vuefire';
@@ -60,11 +60,15 @@
     //TODO: use $subscribe((mutation, state) => { to watch for changes in the store and update the display name
     // let data = userStore.getData();
     // const displayName = data.displayName;
-    function getDisplayName() {
-      userStore.loadUserProfile();
-      console.log("display name: ", userStore.displayName);
-      displayName.value = userStore.displayName;
-      userStore.toString();
+    async function getDisplayName() {
+      // onMounted(async () => {
+          await userStore.loadUserProfile();
+          // Code here will run after the user profile has been loaded
+          userStore.loadUserProfile();
+          console.log("display name: ", userStore.displayName);
+          displayName.value = userStore.displayName;
+          userStore.toString();
+      // });
       // data = userStore.getData();
       // data.then((resolvedData) => {
       //   // console.log(resolvedData?.displayName);
@@ -74,6 +78,10 @@
       //   // return resolvedData?.displayName;
       // });
     } 
+
+    onMounted(async () => {
+      await getDisplayName();
+    });
 
 
     useColorMode().preference = 'dark'; 

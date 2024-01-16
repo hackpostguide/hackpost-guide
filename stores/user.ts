@@ -57,7 +57,7 @@ export const useUserStore = defineStore('user', () => {
     // const user = ref<User | null>(null);
     const user = ref(useCurrentUser()); 
     const userID = ref('');
-    const displayName = ref('');
+    const displayName = ref('Not Signed In');
     const username = ref('');
     const email = ref('');
     const photoURL = ref('');
@@ -68,7 +68,7 @@ export const useUserStore = defineStore('user', () => {
         console.log('resetting user store');
         user.value = null;
         userID.value = '';
-        displayName.value = '';
+        displayName.value = 'Not Signed In';
         username.value = '';
         email.value = '';
         photoURL.value = '';
@@ -113,7 +113,7 @@ export const useUserStore = defineStore('user', () => {
                 // console.log("is authenticated");
                 const { user } = await signInWithEmailAndPassword(auth, email, password);
                 setUser(user);
-                // console.log("signed in through pinia store!")
+                console.log("signed in through pinia store!")
                 router.push('/'); // Redirect the user to a confirmed page
                 // getData(); //doesn't work
                 toString();
