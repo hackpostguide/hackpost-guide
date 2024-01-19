@@ -41,8 +41,9 @@
       <div class="col-start-2 col-end-12 md:col-end-10 my-12">
         <h2 class="Heading2 ">This project is still work in progress.</h2>
         <h3 class="bodyText ">Sign up for our mailing list to receive updates and be the first ones to use our product!</h3>
-        <div class="flex items-center justify-center py-5">
-          <AppButton buttonStyle="major" to="/community">Get Started</AppButton>
+        <div class="flex items-center justify-left py-5">
+          <!-- <AppButton buttonStyle="major" to="/community">Get Started</AppButton> -->
+          <!-- TODO: insert a vueform email list collector -->
         </div>
       </div>
 
