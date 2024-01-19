@@ -4,8 +4,8 @@
 
     <div class="flex flex-col h-screen">
       
-      <Navbar :user="getCurrentUser()" />
-      <!-- <NavbarTest /> -->
+      <!-- <Navbar1 :user="getCurrentUser()" /> -->
+      <Navbar />
 
       <div class="flex-grow p-1 sm:p-10 mt-11" :style="{ background: 'var(--background)' }">
           <!-- <Login /> -->
