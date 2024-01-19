@@ -62,7 +62,7 @@
 
       <!--Add sponsor section later-->
 
-      <!--Last page: Call to action-->
+      <!--Last page: Call to action
       <div class="col-start-2 col-end-12 py-10 h-full">
         <div class="flex items-center justify-center ">
           <h2 class="Heading2">What are you waiting for?</h2>
@@ -73,7 +73,7 @@
         <div class="flex items-center justify-center">
           <AppButton buttonStyle="major" to="/community" class="mx-2">Get Started</AppButton>
         </div>
-      </div>
+      </div> -->
     </div>  
   </template>
   
