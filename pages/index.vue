@@ -44,6 +44,29 @@
         <div class="flex items-center justify-left py-5">
           <!-- <AppButton buttonStyle="major" to="/community">Get Started</AppButton> -->
           <!-- TODO: insert a vueform email list collector -->
+          <Vueform>
+            <TextElement
+              name="email"
+              input-type="email"
+              :rules="[
+                'nullable',
+                'email',
+              ]"
+              :columns="{
+                container: 9,
+              }"
+              placeholder="Your email"
+            />
+            <ButtonElement
+              name="submit"
+              button-label="Submit"
+              :submits="true"
+              :columns="{
+                container: 3,
+              }"
+            />
+          </Vueform>
+          <p class="bodyText"> No spam emails. You can unsubscribe at any time!</p>
         </div>
       </div>
 
