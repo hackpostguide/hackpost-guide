@@ -19,7 +19,7 @@
 
         <!--Buttons in hero page-->
         <div class="flex items-center justify-center">
-          <AppButton buttonStyle="major" to="/courses" class="mx-2">Get Started</AppButton>
+          <AppButton buttonStyle="major" to="/community" class="mx-2">Get Started</AppButton>
           <AppButton buttonStyle="minor" to="/" class="mx-2">Github</AppButton>
         </div>
       </div>
@@ -33,7 +33,7 @@
         <h2 class="Heading2 md:text-right ">Designed for hackathon participants.</h2>
         <h3 class="bodyText md:text-right ">Lorem ipsum dolor sit amet consectetur adipisicing elit. Eaque, harum?</h3>
         <div class="flex items-center justify-end py-5">
-          <AppButton buttonStyle="major" to="/courses">Get Started</AppButton>
+          <AppButton buttonStyle="major" to="/community">Get Started</AppButton>
         </div>
       </div>
 
@@ -45,9 +45,9 @@
         <div class="flex items-center justify-left md:justify-center ">
           <h3 class="bodyText">Check out what others have made so far!</h3>
         </div>
-        <!--Grid with different courses for user to select-->
+        <!--Grid with different community for user to select-->
         <div>
-          <!--Place sample courses here-->
+          <!--Place sample community here-->
         </div>
       </div>
 
@@ -62,7 +62,7 @@
           <h3 class="bodyText">Let's get started!</h3>
         </div>
         <div class="flex items-center justify-center">
-          <AppButton buttonStyle="major" to="/courses" class="mx-2">Get Started</AppButton>
+          <AppButton buttonStyle="major" to="/community" class="mx-2">Get Started</AppButton>
         </div>
       </div>
     </div>  

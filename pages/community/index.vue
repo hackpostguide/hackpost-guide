@@ -10,13 +10,13 @@
         <div class="col-start-2 col-end-12 grid grid-cols-1 sm:grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8 mt-4">
         <!-- <div class="grid grid-cols-1 sm:grid-cols-1 md:grid-cols-2 lg:grid-cols    -3 gap-8 mt-4"> -->
             <div class="col-span-1 ">
-                <ModuleCard to="/courses/test" />
+                <ModuleCard to="/community/test" />
             </div> 
             <div class="col-span-1 ">
-                <ModuleCard to="/courses/tailwindtest"/>
+                <ModuleCard to="/community/tailwindtest"/>
             </div> 
             <div class="col-span-1 ">
-                <ModuleCard to="/courses/python"/>
+                <ModuleCard to="/community/python"/>
             </div> 
 
         </div>
