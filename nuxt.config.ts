@@ -5,7 +5,7 @@ export default defineNuxtConfig({
   //enable nuxt devtools
   devtools: { enabled: true },
 
-  ssr: false, //disable server side rendering
+  ssr: true,
 
   //existing modules in use 
     modules: [
