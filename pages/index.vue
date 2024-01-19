@@ -37,7 +37,16 @@
         </div>
       </div>
 
-      <!--Third page: Entice users to explore-->
+      <!-- Mailing list signup -->
+      <div class="col-start-2 col-end-12 md:col-end-10 my-12">
+        <h2 class="Heading2 ">This project is still work in progress.</h2>
+        <h3 class="bodyText ">Sign up for our mailing list to receive updates and be the first ones to use our product!</h3>
+        <div class="flex items-center justify-center py-5">
+          <AppButton buttonStyle="major" to="/community">Get Started</AppButton>
+        </div>
+      </div>
+
+      <!--Third page: Entice users to explore
       <div class="col-start-2 col-end-12 py-10 h-screen mt-24">
         <div class="flex items-center justify-left md:justify-center ">
           <h2 class="Heading2">Supercharge your hacking skills.</h2>
@@ -45,11 +54,11 @@
         <div class="flex items-center justify-left md:justify-center ">
           <h3 class="bodyText">Check out what others have made so far!</h3>
         </div>
-        <!--Grid with different community for user to select-->
+        Grid with different community for user to select
         <div>
-          <!--Place sample community here-->
+          Place sample community here
         </div>
-      </div>
+      </div>-->
 
       <!--Add sponsor section later-->
 
