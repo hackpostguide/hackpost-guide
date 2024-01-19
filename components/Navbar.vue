@@ -11,12 +11,12 @@
           </div>
           <div class="flex items-center justify-center flex-1 sm:items-stretch sm:justify-start">
             <div class="flex items-center flex-shrink-0">
-              <NuxtLink to="/" class="flex items-center">
-                <Logos-SvgIcon iconWidth="24" iconHeight="24" />
-                <p class="px-3">
-                  <span class="font-bold text-white">HackPost</span> Guide
-                </p>
-              </NuxtLink>
+                <NuxtLink to="/" class="flex items-center">
+                    <Logos-SvgIcon iconWidth="24" iconHeight="24" />
+                    <p class="px-3">
+                        <span class="font-bold text-white">HackPost</span> Guide
+                    </p>
+                </NuxtLink>
             </div>
             <div class="hidden sm:block sm:ml-6">
               <div class="flex space-x-4">
