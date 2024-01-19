@@ -37,7 +37,6 @@
               <Icon :name="item.icon" class="h-6 w-6" aria-hidden="true" />
           </a>
           </div>
-          <!-- Update license and copyright later -->
           <p class="mt-8 text-sm leading-6 text-gray-800 dark:text-gray-400 md:order-1 md:mt-0">
           &copy; 2023 - {{ new Date().getFullYear() }} HackPost Guide, All rights reserved.
           &bull;
