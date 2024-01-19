@@ -12,9 +12,9 @@
         </div>
   
         <!-- Navigation Links -->
-        <div class="hidden lg:block col-start-6 col-end-11">
-        <div class="flex items-center justify-end">
-          <ul class="flex gap-9">
+        <div class="hidden lg:flex justify-end col-start-6 col-end-11">
+        <div class="flex items-center">
+          <ul class="flex gap-9 items-center">
             <li v-for="item in filteredNavigation" :key="item.name">
               <AppButton :to="item.href" buttonStyle="transparent">{{ item.name }}</AppButton>
             </li>
@@ -29,7 +29,7 @@
         <!-- Mobile Menu Button -->
         <!-- TODO: fix the navbar height changing in different screen sizes -->
         <div class="col-start-10 col-end-11 flex items-center justify-end lg:hidden">
-          <DisclosureButton class="relative inline-flex items-center justify-center rounded-md p-2 text-gray-700 dark:text-gray-200 hover:text-gray-500 dark:hover:text-gray-500 focus:outline-none focus:ring-2 focus:ring-inset focus:ring-gray-700 dark:focus:ring-gray-300">
+          <DisclosureButton class="relative inline-flex items-center justify-center rounded-md p-2 text-gray-700 dark:text-gray-200 hover:text-gray-400 dark:hover:text-gray-500 focus:outline-none focus:ring-2 focus:ring-inset focus:ring-gray-700 dark:focus:ring-gray-300">
             <span class="absolute -inset-0.5"></span>
             <span class="sr-only">Open main menu</span>
             <Icon name="fa6-solid:bars" v-if="!open" class="block h-6 w-6" aria-hidden="true" />
@@ -38,8 +38,8 @@
         </div>
   
         <!-- Light/Dark Mode Switch -->
-        <div class="col-start-11 col-end-12 flex items-center justify-end">
-          <ModeSwitch class="text-gray-900 dark:text-white hover:text-gray-700 dark:hover:text-gray-500" />
+        <div class="col-start-11 col-end-12 flex items-center justify-end p-2">
+          <ModeSwitch class="text-gray-900 dark:text-white hover:text-gray-400 dark:hover:text-gray-500" />
         </div>
       </nav>
 
