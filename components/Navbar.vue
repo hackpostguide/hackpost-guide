@@ -47,7 +47,7 @@
     <DisclosurePanel v-if="open" class="lg:hidden grid grid-cols-12 ">
     <ul class="col-start-2 col-end-12 space-y-2 py-3"> 
         <li v-for="item in filteredNavigation" :key="item.name">
-            <AppButton :to="item.href" class="block text-left w-full">{{ item.name }}</AppButton>
+            <AppButton :to="item.href" buttonStyle="transparent" class="block text-left w-full">{{ item.name }}</AppButton>
         </li>
         <li>
         <!-- <AppButton v-if="isUserSignedIn()" @click="userStore.signOut()" class="block text-left w-full">Sign Out</AppButton>
