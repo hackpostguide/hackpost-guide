@@ -18,10 +18,10 @@
             <li v-for="item in filteredNavigation" :key="item.name">
               <AppButton :to="item.href" buttonStyle="transparent">{{ item.name }}</AppButton>
             </li>
-            <li>
+            <!-- <li>
               <AppButton v-if="isUserSignedIn()" @click="userStore.signOut()" class="btn">Sign Out</AppButton>
               <AppButton v-else :to="'/signup1'" class="btn">{{ displayName }}</AppButton>
-            </li>
+            </li> -->
           </ul>
         </div>
         </div>
@@ -47,11 +47,11 @@
     <DisclosurePanel v-if="open" class="lg:hidden grid grid-cols-12 ">
     <ul class="col-start-2 col-end-12 space-y-2 py-3"> 
         <li v-for="item in filteredNavigation" :key="item.name">
-        <AppButton :to="item.href" class="block text-left w-full">{{ item.name }}</AppButton>
+            <AppButton :to="item.href" class="block text-left w-full">{{ item.name }}</AppButton>
         </li>
         <li>
-        <AppButton v-if="isUserSignedIn()" @click="userStore.signOut()" class="block text-left w-full">Sign Out</AppButton>
-        <AppButton v-else :to="'/signup1'" class="block text-left w-full">{{ displayName }}</AppButton>
+        <!-- <AppButton v-if="isUserSignedIn()" @click="userStore.signOut()" class="block text-left w-full">Sign Out</AppButton>
+        <AppButton v-else :to="'/signup1'" class="block text-left w-full">{{ displayName }}</AppButton> -->
         </li>
     </ul>
     </DisclosurePanel>
