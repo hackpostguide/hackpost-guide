@@ -38,7 +38,7 @@
         </div>
   
         <!-- Light/Dark Mode Switch -->
-        <div class="col-start-11 col-end-12 flex items-center justify-end p-2">
+        <div class="col-start-11 col-end-12 flex items-center justify-end pl-6 pr-2 py-2">
           <ModeSwitch class="text-gray-900 dark:text-white hover:text-gray-400 dark:hover:text-gray-500" />
         </div>
       </nav>
