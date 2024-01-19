@@ -27,11 +27,17 @@
       <!--Second page: who we are-->
       <div class="col-start-2 col-end-12 md:col-end-10 mt-12">
         <h2 class="Heading2 ">For the community, by the community.</h2>
-        <h3 class="bodyText ">Lorem ipsum dolor sit amet consectetur adipisicing elit. Commodi repellat eos voluptas ut eligendi aspernatur dolorem harum minima facilis expedita?</h3>
+        <h3 class="bodyText ">
+          We're a community of hackathon enthusiasts. Our mission is to empower developers of all skill levels to learn, share, and grow. Together, we're shaping the future of technology.
+        
+        </h3>
       </div>
       <div class="col-start-2 col-end-12 md:col-start-5 mt-12">
         <h2 class="Heading2 md:text-right ">Designed for hackathon participants.</h2>
-        <h3 class="bodyText md:text-right ">Lorem ipsum dolor sit amet consectetur adipisicing elit. Eaque, harum?</h3>
+        <h3 class="bodyText md:text-right ">
+          Tailored for hackathon participants, HackPost provides resources to meet your needs. From tutorials to coding challenges, our platform helps you excel in hackathons. Whether you're a beginner or mastering new technologies, we support your journey towards success.
+        
+        </h3>
         <div class="flex items-center justify-end py-5">
           <AppButton buttonStyle="major" to="/community">Get Started</AppButton>
         </div>
@@ -40,7 +46,12 @@
       <!-- Mailing list signup -->
       <div class="col-start-2 col-end-12 md:col-end-10 my-12">
         <h2 class="Heading2 ">This project is still work in progress.</h2>
-        <h3 class="bodyText ">Sign up for our mailing list to receive updates and be the first ones to use our product!</h3>
+        <h3 class="bodyText ">
+          If you find a bug, or if you would like to contribute, check out our 
+          <AppLink :href="SOCIALS.githubRepo" target="_blank" rel="noopener noreferrer">Github repository! </AppLink>
+          Join our mailing list to receive the latest updates, exclusive insights, and early access to new features! We're committed to a spam-free experience, and you can unsubscribe anytime.
+
+        </h3>
         <div class="flex items-center justify-left py-5">
           <!-- <AppButton buttonStyle="major" to="/community">Get Started</AppButton> -->
           <!-- TODO: insert a vueform email list collector -->
@@ -66,7 +77,6 @@
               }"
             />
           </Vueform>
-          <p class="bodyText"> No spam emails. You can unsubscribe at any time!</p>
         </div>
       </div>
 
