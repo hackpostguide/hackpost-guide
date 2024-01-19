@@ -72,12 +72,12 @@ const navigation = {
       icon: 'mdi:email',
       hoverClass: 'hover:text-red-500'
     },
-    {
-      name: 'X',
-      href: SOCIALS.twitter,
-      icon: 'ri:twitter-x-fill',
-      hoverClass: 'hover:text-blue-400'
-    },
+    // {
+    //   name: 'X',
+    //   href: SOCIALS.twitter,
+    //   icon: 'ri:twitter-x-fill',
+    //   hoverClass: 'hover:text-blue-400'
+    // },
     {
       name: 'GitHub',
       href: SOCIALS.github,
@@ -96,12 +96,12 @@ const navigation = {
       icon: 'mdi:discord',
       hoverClass: 'hover:text-blue-500'
     },
-    {
-      name: 'Instagram',
-      href: SOCIALS.instagram,
-      icon: 'mdi:instagram',
-      hoverClass: 'hover:text-pink-500'
-    },
+    // {
+    //   name: 'Instagram',
+    //   href: SOCIALS.instagram,
+    //   icon: 'mdi:instagram',
+    //   hoverClass: 'hover:text-pink-500'
+    // },
     ],
     contact: [
         { name: 'Email', to: '/' },
