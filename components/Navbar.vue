@@ -1,8 +1,9 @@
 
 <template>
-  <header class="stickTop px-1 sm:px-10 shadow-sm bg-white dark:bg-black">
+  <Disclosure as="nav" class="stickTop px-1 sm:px-10 shadow-sm bg-white dark:bg-black" v-slot="{ open }">
     <nav class="py-6 grid grid-cols-12 dark:text-white text-black">
       <div class="col-start-2 col-end-9 md:col-end-6">
+
         <NuxtLink to="/" class="flex items-left">
           <Logos-SvgIcon iconWidth="24" iconHeight="24" />
           <p class="px-3">
@@ -24,8 +25,13 @@
           </li>
         </ul>
       </div>
-      <div class="col-start-10 col-end-11 flex items-center justify-end mobileon">
-        <NavbarDropdown></NavbarDropdown>
+      <div class="col-start-10 col-end-11 flex items-center justify-end lg:hidden">
+        <DisclosureButton class="relative inline-flex items-center justify-center rounded-md p-2 text-gray-400 hover:bg-gray-700 hover:text-white focus:outline-none focus:ring-2 focus:ring-inset focus:ring-white">
+            <span class="absolute -inset-0.5" />
+            <span class="sr-only">Open main menu</span>
+            <Icon name="fa6-solid:bars" v-if="!open" class="block h-6 w-6" aria-hidden="true" />
+            <Icon name="octicon:x-12" v-else class="block h-6 w-6" aria-hidden="true" />
+          </DisclosureButton>
       </div>
 
       
@@ -34,10 +40,11 @@
         <ModeSwitch class=" dark:text-gray-100 hover:text-gray-700 dark:hover:text-gray-300" />
       </div>
     </nav>
-  </header>
+  </Disclosure>
 </template>
 
 <script setup lang="ts" async>
+  import { Disclosure, DisclosureButton, DisclosurePanel, Menu, MenuButton, MenuItem, MenuItems } from '@headlessui/vue'
     
     // import {
     //   signOut,
