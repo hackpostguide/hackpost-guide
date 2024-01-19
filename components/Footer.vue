@@ -39,12 +39,12 @@
           </div>
           <!-- Update license and copyright later -->
           <p class="mt-8 text-sm leading-6 text-gray-800 dark:text-gray-400 md:order-1 md:mt-0">
-          &copy; {{ new Date().getFullYear() }} HackPost Guide, All rights reserved.
+          &copy; 2023 - {{ new Date().getFullYear() }} HackPost Guide, All rights reserved.
           &bull;
-          Written content licensed under
+          Licensed under
           <AppLink class="inline-block underline hover:no-underline"
-              to="https://creativecommons.org/licenses/by-nc-sa/4.0/">
-              CC-BY-NC-SA 4.0
+              to="https://www.gnu.org/licenses/gpl-3.0.en.html">
+              GNU General Public License v3.0
           </AppLink>
           &bull;
           </p>
