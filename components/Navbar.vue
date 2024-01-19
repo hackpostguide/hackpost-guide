@@ -12,8 +12,8 @@
         </div>
   
         <!-- Navigation Links -->
-        <div class="hidden">
-        <div class="col-start-6 col-end-11 flex items-center justify-end mobileoff">
+        <div class="hidden lg:block col-start-6 col-end-11">
+        <div class="flex items-center justify-end mobileoff">
           <ul class="flex gap-9">
             <li v-for="item in filteredNavigation" :key="item.name">
               <AppButton :to="item.href" buttonStyle="transparent">{{ item.name }}</AppButton>
@@ -59,7 +59,7 @@
   ];
   
   const filteredNavigation = computed(() => {
-    return isUserSignedIn() ? navigation : navigation.filter(item => item.name !== 'PrivateLink'); // Filter out links not for unauthenticated users, if necessary
+    return isUserSignedIn() ? navigation : navigation.filter(item => item.name !== 'PrivateLink'); // Filter out links not for unauthenticated users
   });
   
   function isUserSignedIn() {
