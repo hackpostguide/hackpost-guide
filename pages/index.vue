@@ -48,7 +48,7 @@
         <h2 class="Heading2 ">This project is still work in progress.</h2>
         <h3 class="bodyText ">
           If you find a bug, or if you would like to contribute, check out our 
-          <AppLink :href="SOCIALS.githubRepo" target="_blank" rel="noopener noreferrer">Github repository! </AppLink>
+          <AppLink :href="SOCIALS.githubRepo" target="_blank" rel="noopener noreferrer" class="link">Github repository</AppLink>! 
           Join our mailing list to receive the latest updates, exclusive insights, and early access to new features! We're committed to a spam-free experience, and you can unsubscribe anytime.
 
         </h3>
