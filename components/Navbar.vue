@@ -67,7 +67,7 @@
   const displayName = computed(() => userStore.displayName ? 'Sign Out' : 'Sign In');
   
   const navigation = [
-    { name: 'Modules', href: '/community' },
+    { name: 'Explore', href: '/community' },
     { name: 'About', href: '/about' },
     // Add other non-authentication-related links here
   ];
