@@ -41,8 +41,8 @@
           &copy; 2023 - {{ new Date().getFullYear() }} HackPost Guide, All rights reserved.
           &bull;
           Licensed under
-          <AppLink class="inline-block underline hover:no-underline"
-              to="https://www.gnu.org/licenses/gpl-3.0.en.html">
+          <AppLink target="_blank" rel="noopener noreferrer" class="inline-block underline hover:no-underline"
+                :href="'https://www.gnu.org/licenses/licenses.html#GPL/'">
               GNU General Public License v3.0
           </AppLink>
           &bull;

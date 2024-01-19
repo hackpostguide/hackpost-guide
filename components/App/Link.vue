@@ -46,7 +46,7 @@ const propsWithoutRelAndTarget = computed(() => {
 });
 
 // TODO: Add exceptions for certain domains if needed
-const ALLOWED_DOMAINS = ["imaginai.dev"];
+const ALLOWED_DOMAINS = ["hackpost.guide"];
 const isDomainException = computed(
   () =>
     typeof path.value === "string" &&
