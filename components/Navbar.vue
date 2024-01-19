@@ -13,7 +13,7 @@
   
         <!-- Navigation Links -->
         <div class="hidden lg:block col-start-6 col-end-11">
-        <div class="flex items-center justify-end mobileoff">
+        <div class="flex items-center justify-end">
           <ul class="flex gap-9">
             <li v-for="item in filteredNavigation" :key="item.name">
               <AppButton :to="item.href" buttonStyle="transparent">{{ item.name }}</AppButton>
@@ -27,6 +27,7 @@
         </div>
         
         <!-- Mobile Menu Button -->
+        <!-- TODO: fix the navbar height changing in different screen sizes -->
         <div class="col-start-10 col-end-11 flex items-center justify-end lg:hidden">
           <DisclosureButton class="relative inline-flex items-center justify-center rounded-md p-2 text-gray-400 hover:bg-gray-700 hover:text-white focus:outline-none focus:ring-2 focus:ring-inset focus:ring-white">
             <span class="absolute -inset-0.5"></span>
@@ -41,6 +42,19 @@
           <ModeSwitch class="dark:text-gray-100 hover:text-gray-700 dark:hover:text-gray-300" />
         </div>
       </nav>
+
+      <!-- Mobile Navigation Links -->
+    <DisclosurePanel v-if="open" class="lg:hidden grid grid-cols-12 ">
+    <ul class="col-start-2 col-end-12 space-y-2 py-3"> 
+        <li v-for="item in filteredNavigation" :key="item.name">
+        <AppButton :to="item.href" class="block text-left w-full">{{ item.name }}</AppButton>
+        </li>
+        <li>
+        <AppButton v-if="isUserSignedIn()" @click="userStore.signOut()" class="block text-left w-full">Sign Out</AppButton>
+        <AppButton v-else :to="'/signup1'" class="block text-left w-full">{{ displayName }}</AppButton>
+        </li>
+    </ul>
+    </DisclosurePanel>
     </Disclosure>
   </template>
   
