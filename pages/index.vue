@@ -20,7 +20,7 @@
         <!--Buttons in hero page-->
         <div class="flex items-center justify-center">
           <AppButton buttonStyle="major" to="/community" class="mx-2">Get Started</AppButton>
-          <AppButton buttonStyle="minor" to="/" class="mx-2">Github</AppButton>
+          <AppLink :href="SOCIALS.githubRepo" target="_blank" rel="noopener noreferrer" class="btn-minor mx-2">Github</AppLink>
         </div>
       </div>
 
@@ -28,7 +28,7 @@
       <div class="col-start-2 col-end-12 md:col-end-10 mt-12">
         <h2 class="Heading2 ">For the community, by the community.</h2>
         <h3 class="bodyText ">
-          We're a community of hackathon enthusiasts. Our mission is to empower developers of all skill levels to learn, share, and grow. Together, we're shaping the future of technology.
+          We're a community of hackathon enthusiasts. Our mission is to empower developers of all skill levels to learn, share, and grow.
         
         </h3>
       </div>
