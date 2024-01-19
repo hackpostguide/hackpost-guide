@@ -29,7 +29,7 @@
         <!-- Mobile Menu Button -->
         <!-- TODO: fix the navbar height changing in different screen sizes -->
         <div class="col-start-10 col-end-11 flex items-center justify-end lg:hidden">
-          <DisclosureButton class="relative inline-flex items-center justify-center rounded-md p-2 text-gray-400 hover:bg-gray-700 hover:text-white focus:outline-none focus:ring-2 focus:ring-inset focus:ring-white">
+          <DisclosureButton class="relative inline-flex items-center justify-center rounded-md p-2 text-gray-700 dark:text-gray-200 hover:text-gray-500 dark:hover:text-gray-500 focus:outline-none focus:ring-2 focus:ring-inset focus:ring-gray-700 dark:focus:ring-gray-300">
             <span class="absolute -inset-0.5"></span>
             <span class="sr-only">Open main menu</span>
             <Icon name="fa6-solid:bars" v-if="!open" class="block h-6 w-6" aria-hidden="true" />
@@ -39,7 +39,7 @@
   
         <!-- Light/Dark Mode Switch -->
         <div class="col-start-11 col-end-12 flex items-center justify-end">
-          <ModeSwitch class="dark:text-gray-100 hover:text-gray-700 dark:hover:text-gray-300" />
+          <ModeSwitch class="text-gray-900 dark:text-white hover:text-gray-700 dark:hover:text-gray-500" />
         </div>
       </nav>
 
