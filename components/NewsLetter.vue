@@ -19,38 +19,37 @@
 
 <script>
 import { ref } from 'vue'
-import { collection, addDoc, doc, setDoc, getDoc, writeBatch } from 'firebase/firestore';
+import { collection, addDoc, doc, setDoc, getDoc } from 'firebase/firestore';
 
 const db = useFirestore();
 
 export default {
-  setup(props, context) {
-    const form$ = ref(null)
-
-    onMounted(() => {
-    if (form$.value) {
-        form$.value.messageBag.clear();
-    }
-    })
+  setup() {
+    const form$ = ref(null);
 
     const handleSubmit = async () => {
-      form$.value.messageBag.clear()
+      form$.value.messageBag.clear();
       const email = form$.value.data.email;
-      console.log(validateEmail(email));
+
       if (!validateEmail(email)) {
-        form$.value.messageBag.append('Please enter a valid email address.')
+        form$.value.messageBag.append('Please enter a valid email address.');
+        return;
+      }
+
+      const newsletterRef = doc(db, "newsletter", email);
+      const docSnap = await getDoc(newsletterRef);
+
+      if (docSnap.exists()) {
+        form$.value.messageBag.append('This email is already subscribed.');
       } else {
         try {
-            const docRef = await addDoc(collection(db, "newsletter"), {
-                email: email
-            });
-            console.log("Document written with ID: ", docRef.id);
-            form$.value.messageBag.append(email + ' has successfully been added to our mailing list!', 'message')
+          await setDoc(newsletterRef, { email: email });
+          console.log("Document written with email: ", email);
+          form$.value.messageBag.append(email + ' has successfully been added to our mailing list!', 'message');
         } catch (e) {
-            console.error("Error adding document: ", e);
-            form$.value.messageBag.append(e, 'error')
+          console.error("Error adding document: ", e);
+          form$.value.messageBag.append(e, 'error');
         }
-        
       }
     }
 
