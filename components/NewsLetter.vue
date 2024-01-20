@@ -37,9 +37,9 @@ export default {
       }
 
       const newsletterRef = doc(db, "newsletter", email);
-      const docSnap = await getDoc(newsletterRef);
+      const emailDoc = await getDoc(newsletterRef);
 
-      if (docSnap.exists()) {
+      if (emailDoc.exists()) {
         form$.value.messageBag.append('This email is already subscribed.');
       } else {
         try {
