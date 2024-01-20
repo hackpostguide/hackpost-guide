@@ -1,17 +1,21 @@
 <template>
     <div>
-        <Vueform ref="form$">
+        <Vueform ref="form$" validate-on="step">
             <TextElement
               name="email"
               input-type="email"
               :rules="[
-                'required',
+                'nullable',
                 'email',
               ]"
               :columns="{
                 container: 9,
               }"
               placeholder="Your email"
+
+              :messages="{
+                email: 'Please fill in a valid email address'
+              }"
             />
             <ButtonElement
               name="submit"
@@ -26,7 +30,18 @@
     </div>
 </template>
 
-<script setup lang="ts">
+<script>
+import { ref, onMounted } from 'vue'
+
+export default {
+  setup(props, context) {
+    const form$ = ref(null)
+
+    return {
+      form$
+    }
+  }
+}
     
 </script>
 
