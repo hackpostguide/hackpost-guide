@@ -5,7 +5,7 @@ export default defineNuxtConfig({
   //enable nuxt devtools
   devtools: { enabled: true },
 
-  ssr: true,
+  ssr: false,
 
   //existing modules in use 
     modules: [
