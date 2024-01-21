@@ -19,6 +19,7 @@
 
 <script>
 import { ref } from 'vue'
+import { useFirestore, useFirebaseAuth, useCollection } from 'vuefire'; 
 import { collection, addDoc, doc, setDoc, getDoc } from 'firebase/firestore';
 
 const db = useFirestore();
@@ -43,11 +44,11 @@ export default {
         form$.value.messageBag.append('This email is already subscribed.');
       } else {
         try {
-          await setDoc(newsletterRef, { email: email });
+          await setDoc(newsletterRef, { email: email, from: 'hackpost.guide' });
           console.log("Document written with email: ", email);
           form$.value.messageBag.append(email + ' has successfully been added to our mailing list!', 'message');
         } catch (e) {
-          console.error("Error adding document: ", e);
+          console.error("Error adding document: " + e + ', please try again later.');
           form$.value.messageBag.append(e, 'error');
         }
       }
