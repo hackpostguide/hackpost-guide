@@ -42,7 +42,7 @@
           &bull;
           Licensed under
           <AppLink target="_blank" rel="noopener noreferrer" class="inline-block underline hover:no-underline"
-                :href="'https://www.gnu.org/licenses/licenses.html#GPL/'">
+                :href="'https://www.gnu.org/licenses/gpl-3.0.html#license-text/'">
               GNU General Public License v3.0
           </AppLink>
           &bull;
