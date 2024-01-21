@@ -91,7 +91,14 @@
   </template>
   
   <script setup>
-  
+  import { defineAsyncComponent } from 'vue';
+
+  //need to import components that use firebase asyncrousnously to avoid errors due to firebase not being initialized
+  const NewsLetter = defineAsyncComponent(() =>
+    import('~/components/NewsLetter.vue')
+  );
+
+
     //metadata for SEO
     useHead({
         title: 'HackPost',
