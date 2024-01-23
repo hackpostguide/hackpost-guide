@@ -4,7 +4,9 @@
             
         </p>
         <div class="col-start-2 col-end-12">
-            <!-- <UserCreateAccount /> -->
+            <div>
+                <UserCreateAccount />
+            </div>
         </div>
     </div>
 </template>

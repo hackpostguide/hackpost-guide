@@ -197,6 +197,8 @@
 
 <script lang="ts">
 import { ref, onMounted } from 'vue'
+import { useFirestore, useFirebaseAuth, useCollection } from 'vuefire'; 
+import { collection, addDoc, doc, setDoc, getDoc } from 'firebase/firestore';
 
 export default {
   setup() {
