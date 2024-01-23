@@ -193,7 +193,7 @@
         />
       </FormElements>
 
-      <FormStepsControls />
+      <!-- <FormStepsControls /> -->
     </template>
   </Vueform>
 </template>
