@@ -95,7 +95,7 @@
           :rules="[
             'required',
           ]"
-          field-name="Phone"
+          field-name="Username"
           description="You won't be able to change your username after you create your account"
         />
         <TextElement
@@ -132,6 +132,9 @@
         />
         <CheckboxElement
           name="terms"
+          :rules="[
+            'required',
+          ]"
           text="I accept the Terms & Conditions & Privacy Policy"
         />
         <CheckboxElement
