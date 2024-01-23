@@ -205,18 +205,34 @@ import { collection, addDoc, doc, setDoc, getDoc } from 'firebase/firestore';
 
 export default {
   setup() {
-    const form$ = ref<any>(null) // Initialize form$ with the 'any' type
+    const form$ = ref<any>(null)
+    const userCreated = ref(false) // userCreated variable is initially set to false 
 
     onMounted(() => {
       // console.log(form$.value?.data)
     })
 
+    const checkEmailVerification = () => {
+      // For now, just return true. Implement actual logic later.
+      return true;
+    }
+
+    // Function to be called when "Create account" is clicked and validated
+    const createUser = () => {
+      // TODO: add user creation logic
+      // After successful creation, set userCreated to true
+      userCreated.value = true;
+    }
+
     return {
       form$,
+      userCreated,
+      createUser,
+      checkEmailVerification,
     }
   },
 
-  data() { //return data
+  data() {
     return {
       data: {}
     }
