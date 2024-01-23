@@ -87,7 +87,7 @@
     left: 0;
     width: 100%;
     z-index: 1000;
-    box-shadow: 0 3px 6px rgba(128, 128, 128, 0.2);
+    box-shadow: 0 3px 6px rgba(128, 128, 128, 0.1);
   }
 
   </style>
