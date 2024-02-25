@@ -55,6 +55,7 @@
         <div class="flex items-center justify-left py-5">
           <!-- <AppButton buttonStyle="major" to="/community">Get Started</AppButton> -->
           <!-- TODO: insert a vueform email list collector -->
+          <!-- Done -->
           <NewsLetter />
         </div>
       </div>
